@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Verified Security Pack Demo</title>
+  <style>
+    :root {
+      --bg: #eef0eb;
+      --panel: #fbfaf6;
+      --panel-2: #f0eee7;
+      --ink: #191c1a;
+      --muted: #66706a;
+      --line: #c9cec7;
+      --line-strong: #303732;
+      --accent: #286b56;
+      --accent-soft: #e0f1e9;
+      --warn: #9a4b24;
+      --warn-soft: #f7e6d9;
+      --danger: #8f2f2f;
+      --good: #25724f;
+      --code: #171b19;
+      --shadow: 0 18px 60px rgba(31, 38, 35, .13);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, rgba(40,107,86,.10), transparent 38%), var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      min-height: 100vh;
+    }
+    button, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 18px; }
+    .top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+    .kicker {
+      color: var(--muted);
+      font: 12px var(--mono);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    h1 { margin: 0; font-size: clamp(30px, 4vw, 52px); line-height: 1; }
+    .top-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .btn {
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      background: var(--panel);
+      color: var(--ink);
+      min-height: 34px;
+      padding: 8px 11px;
+      display: inline-flex;
+      gap: 7px;
+      align-items: center;
+      font-weight: 750;
+    }
+    .btn:hover { background: var(--panel-2); }
+    .btn.primary { background: var(--ink); color: var(--panel); }
+    .btn.accent { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.warn { background: var(--warn); border-color: var(--warn); color: #fff; }
+    .btn.ghost { background: transparent; border-color: transparent; color: var(--muted); }
+    .btn.small { min-height: 28px; padding: 5px 8px; font-size: 12px; }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .shell {
+      min-height: 780px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 10px;
+      background: var(--panel);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .chrome {
+      height: 38px;
+      border-bottom: 1.5px solid var(--line-strong);
+      background: var(--panel-2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px;
+      color: var(--muted);
+      font: 12px var(--mono);
+    }
+    .traffic { display: flex; gap: 7px; }
+    .traffic i { width: 12px; height: 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,.2); }
+    .traffic i:nth-child(1) { background: #ff625c; }
+    .traffic i:nth-child(2) { background: #ffbd44; }
+    .traffic i:nth-child(3) { background: #00ca4e; }
+    .chrome-title { flex: 1; text-align: center; }
+    .app {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      min-height: 742px;
+    }
+    aside {
+      background: var(--panel-2);
+      border-right: 1.5px solid var(--line-strong);
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.58);
+      padding: 11px;
+    }
+    .eyebrow {
+      font: 10px var(--mono);
+      color: var(--muted);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .repo { font-weight: 800; }
+    .sub { color: var(--muted); font-size: 12px; line-height: 1.45; margin-top: 4px; }
+    .pack-card { border-color: var(--line-strong); }
+    .pack-card.on { background: var(--accent-soft); border-color: var(--accent); }
+    .pack-card.required { background: var(--warn-soft); border-color: var(--warn); }
+    .status-dot { width: 9px; height: 9px; border-radius: 999px; background: var(--muted); display: inline-block; }
+    .status-dot.on { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    .status-dot.warn { background: var(--warn); box-shadow: 0 0 0 4px var(--warn-soft); }
+    .pack-title { display: flex; gap: 8px; align-items: center; font-weight: 850; }
+    .metrics { display: grid; gap: 7px; font: 12px var(--mono); }
+    .metric { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 6px; border-bottom: 1px dashed var(--line); }
+    .metric:last-child { border-bottom: 0; padding-bottom: 0; }
+    .metric b { color: var(--ink); }
+    .main { display: grid; grid-template-rows: auto 1fr auto; min-width: 0; }
+    .head {
+      border-bottom: 1.5px solid var(--line-strong);
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .crumb { font: 12px var(--mono); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(360px, .92fr) minmax(420px, 1.08fr);
+      min-height: 100%;
+    }
+    .pane { min-width: 0; display: grid; grid-template-rows: auto 1fr; }
+    .pane + .pane { border-left: 1.5px solid var(--line-strong); }
+    .pane-head {
+      padding: 9px 14px;
+      border-bottom: 1px dashed var(--line-strong);
+      background: var(--panel-2);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--muted);
+      font: 11px var(--mono);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .pane-body { overflow: auto; padding: 14px; }
+    .message {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.6);
+      margin-bottom: 12px;
+      padding: 11px 12px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    .message.user { margin-left: 26px; background: var(--panel-2); }
+    .message.agent { margin-right: 26px; }
+    .who {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font: 10px var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .tag {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 2px 7px;
+      color: var(--muted);
+      font: 10px var(--mono);
+      white-space: nowrap;
+      align-items: center;
+    }
+    .tag.accent { border-color: var(--accent); color: var(--accent); background: #f6fffb; }
+    .tag.warn { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
+    .tag.good { border-color: var(--good); color: var(--good); background: #e7f4ed; }
+    .banner {
+      border: 1px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 8px;
+      padding: 13px;
+      margin-bottom: 12px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+    }
+    .shield {
+      width: 32px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--accent);
+      border-radius: 7px 7px 16px 16px;
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .banner h2 { margin: 0 0 4px; font-size: 18px; }
+    .banner p { margin: 0 0 10px; color: var(--muted); line-height: 1.45; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .terminal {
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--code);
+      color: #dce5df;
+      font: 12px var(--mono);
+      margin-bottom: 12px;
+    }
+    .term-head {
+      padding: 7px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      color: #95a19a;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .term-body { padding: 10px; min-height: 180px; }
+    .term-line { min-height: 22px; white-space: pre-wrap; }
+    .term-line.dim { color: #88948d; }
+    .term-line.good { color: #8fd5a9; }
+    .term-line.warn { color: #e6b082; }
+    .term-line.accent { color: #86d9b9; }
+    .plan {
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--panel-2);
+      padding: 11px;
+      margin-bottom: 12px;
+    }
+    .plan.on { border-color: var(--accent); background: var(--accent-soft); }
+    .plan-title { display: flex; justify-content: space-between; gap: 8px; align-items: center; font-weight: 850; margin-bottom: 8px; }
+    .checks { display: grid; gap: 8px; }
+    .check {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 9px;
+      align-items: start;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.62);
+      border-radius: 8px;
+      padding: 9px 10px;
+      font-size: 13px;
+    }
+    .check i {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 5px;
+      display: grid;
+      place-items: center;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .check.done i { background: var(--good); border-color: var(--good); color: #fff; }
+    .check.run i { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+    .check.gate i { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+    .check-title { font-weight: 780; }
+    .check-sub { margin-top: 2px; color: var(--muted); font-size: 12px; line-height: 1.35; }
+    .file {
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      background: var(--panel);
+    }
+    .file-head {
+      padding: 8px 11px;
+      background: var(--panel-2);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--muted);
+      font: 12px var(--mono);
+    }
+    .code { background: var(--code); color: #dce5df; font: 12px var(--mono); overflow-x: auto; }
+    .line { display: grid; grid-template-columns: 38px 24px minmax(560px, 1fr); min-height: 22px; }
+    .line span { padding: 3px 8px; white-space: pre; }
+    .ln { color: #788078; text-align: right; border-right: 1px solid rgba(255,255,255,.08); }
+    .mark { color: #a7b0aa; text-align: center; }
+    .add { background: rgba(44,132,86,.23); }
+    .add .mark { color: #8fd5a9; }
+    .del { background: rgba(164,62,54,.24); }
+    .del .mark { color: #ff9b91; }
+    .warnline { background: rgba(173,107,38,.22); }
+    .composer {
+      border-top: 1.5px solid var(--line-strong);
+      background: var(--panel-2);
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: end;
+    }
+    textarea {
+      width: 100%;
+      min-height: 56px;
+      resize: vertical;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      padding: 10px;
+      background: #fff;
+      color: var(--ink);
+    }
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,18,16,.42);
+      z-index: 20;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+    .overlay.open { display: flex; }
+    .modal {
+      width: min(880px, 100%);
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      border: 1.5px solid var(--line-strong);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .modal-head {
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--line-strong);
+      background: var(--panel-2);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .modal-head h2 { margin: 0 0 4px; }
+    .modal-body { padding: 16px; }
+    .modal-actions {
+      border-top: 1px solid var(--line);
+      padding: 13px 16px;
+      background: var(--panel-2);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .modal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .modal-section {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.62);
+      padding: 12px;
+    }
+    .modal-section h3 { margin: 0 0 8px; font-size: 15px; }
+    ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.55; }
+    .scope {
+      border: 1px solid var(--warn);
+      background: var(--warn-soft);
+      border-radius: 8px;
+      padding: 11px;
+      margin-top: 12px;
+      color: #63351f;
+      line-height: 1.45;
+    }
+    @media (max-width: 1000px) {
+      .top, .head, .composer { grid-template-columns: 1fr; }
+      .app { grid-template-columns: 1fr; }
+      aside { display: none; }
+      .workspace, .modal-grid { grid-template-columns: 1fr; }
+      .pane + .pane { border-left: 0; border-top: 1.5px solid var(--line-strong); }
+      .top-actions { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <div class="kicker">Interactive dummy prototype</div>
+        <h1>Verified Security Pack</h1>
+      </div>
+      <div class="top-actions">
+        <a class="btn ghost" href="index.html">Back to launcher</a>
+        <button id="resetBtn" class="btn">Reset demo</button>
+      </div>
+    </header>
+
+    <section class="shell">
+      <div class="chrome">
+        <div class="traffic"><i></i><i></i><i></i></div>
+        <div class="chrome-title">Claude Code · payments-api · interactive demo</div>
+        <div id="chromeState">Pack available</div>
+      </div>
+      <div class="app">
+        <aside>
+          <div class="card">
+            <div class="eyebrow">Project</div>
+            <div class="repo">payments-api</div>
+            <div class="sub">auth middleware · refresh tokens · PostgreSQL</div>
+          </div>
+          <div id="packCard" class="card pack-card">
+            <div class="pack-title"><span id="packDot" class="status-dot"></span><span>Verified Security Pack</span></div>
+            <div id="packSub" class="sub">Detected but not enabled.</div>
+          </div>
+          <div class="card metrics">
+            <div class="eyebrow">Live session</div>
+            <div class="metric"><span>Checks</span><b id="mChecks">0/12</b></div>
+            <div class="metric"><span>Gates</span><b id="mGates">0</b></div>
+            <div class="metric"><span>Checkpoints</span><b id="mCheckpoints">0</b></div>
+            <div class="metric"><span>PR status</span><b id="mPr">not started</b></div>
+          </div>
+          <div class="card">
+            <div class="eyebrow">Try this</div>
+            <div class="sub">Type a task, enable the Pack, run the plan, then approve or reject the destructive DB gate.</div>
+          </div>
+        </aside>
+
+        <main class="main">
+          <div class="head">
+            <div class="crumb">payments-api / src/routes/auth/refresh.ts / auth_sessions migration</div>
+            <div class="actions">
+              <button id="viewChecksBtn" class="btn small">View checks</button>
+              <button id="enableBtn" class="btn small accent">Enable Pack</button>
+              <button id="runBtn" class="btn small primary">Run agent</button>
+            </div>
+          </div>
+
+          <div class="workspace">
+            <section class="pane">
+              <div class="pane-head"><span>Claude session</span><span id="phaseLabel">detected</span></div>
+              <div id="chat" class="pane-body"></div>
+            </section>
+            <section class="pane">
+              <div class="pane-head"><span>Repo + output</span><span id="rightLabel">auth flow</span></div>
+              <div id="right" class="pane-body"></div>
+            </section>
+          </div>
+
+          <div class="composer">
+            <textarea id="taskInput">Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday.</textarea>
+            <button id="sendBtn" class="btn primary">Send task</button>
+          </div>
+        </main>
+      </div>
+    </section>
+  </div>
+
+  <div id="checksModal" class="overlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <h2>What the Security Pack adds</h2>
+          <div class="sub">Visible before enablement so the user can trust the workflow without overtrusting the label.</div>
+        </div>
+        <button class="btn ghost" data-close="checksModal">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="modal-section">
+            <h3>Checks</h3>
+            <ul>
+              <li>Authentication and session-boundary review</li>
+              <li>Authorization checks before privileged changes</li>
+              <li>Input validation and injection risk</li>
+              <li>Secrets, tokens, and PII handling</li>
+              <li>Dependency and OWASP-relevant findings</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h3>Tools</h3>
+            <ul>
+              <li>Read repo files and manifests</li>
+              <li>Edit scoped files after Plan Mode</li>
+              <li>Run local tests and installed scanners</li>
+              <li>Create checkpoints before material edits</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h3>Approval gates</h3>
+            <ul>
+              <li>DROP, TRUNCATE, and schema migrations</li>
+              <li>Access-control model changes</li>
+              <li>Secret rotation or credential touching</li>
+              <li>Disabling TLS, CSRF, auth, or audit logs</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h3>Blocked by default</h3>
+            <ul>
+              <li>Credential exfiltration</li>
+              <li>Prompt injection from repo files</li>
+              <li>Security bypasses framed as shortcuts</li>
+              <li>Destructive shell actions without confirmation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="scope"><b>Scope:</b> Verified means Anthropic-curated and regression-evaluated. It does not certify secure code or replace code review, security review, or formal audits.</div>
+      </div>
+      <div class="modal-actions">
+        <span class="sub">This modal maps directly to the PR-FAQ customer promise.</span>
+        <button id="modalEnableBtn" class="btn accent">Enable Security Pack</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="gateModal" class="overlay" role="dialog" aria-modal="true">
+    <div class="modal" style="width:min(700px,100%)">
+      <div class="modal-head">
+        <div>
+          <h2>Approval gate triggered</h2>
+          <div class="sub">Claude wants to drop the legacy token table after migration.</div>
+        </div>
+        <span class="tag warn">Human confirmation required</span>
+      </div>
+      <div class="modal-body">
+        <div class="scope"><b>Why gated:</b> checkpoint rollback cannot restore a dropped database table. The Pack pauses and asks for explicit confirmation before destructive DB operations.</div>
+        <div class="file" style="margin-top:12px">
+          <div class="file-head"><span>migrations/2026_05_drop_legacy_tokens.sql</span><span class="tag warn">blocked</span></div>
+          <div class="code">
+            <div class="line warnline"><span class="ln">12</span><span class="mark">!</span><span>DROP TABLE IF EXISTS auth_tokens_v1;</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="rejectGateBtn" class="btn">Reject and keep table</button>
+        <div class="actions">
+          <button class="btn ghost" data-close="gateModal">Review plan</button>
+          <button id="approveGateBtn" class="btn warn">Approve destructive action</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      taskSent: false,
+      packOn: false,
+      running: false,
+      gateOpen: false,
+      gateResolved: false,
+      gateApproved: false,
+      prReady: false,
+      logs: []
+    };
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+
+    function msg(role, who, body, tag) {
+      return `<div class="message ${role}"><div class="who"><span>${who}</span>${tag ? `<span class="tag ${tag[1] || ""}">${tag[0]}</span>` : ""}</div>${body}</div>`;
+    }
+    function check(title, sub, cls, tag) {
+      const icon = cls === "done" ? "✓" : cls === "gate" ? "!" : cls === "run" ? "•" : "";
+      return `<div class="check ${cls || ""}"><i>${icon}</i><div><div class="check-title">${title}</div><div class="check-sub">${sub}</div></div>${tag ? `<span class="tag ${cls === "gate" ? "warn" : cls === "done" ? "good" : "accent"}">${tag}</span>` : ""}</div>`;
+    }
+    function codeLine(cls, n, mark, text) {
+      return `<div class="line ${cls || ""}"><span class="ln">${n}</span><span class="mark">${mark || ""}</span><span>${esc(text)}</span></div>`;
+    }
+    function addLog(text, cls = "") {
+      state.logs.push({ text, cls });
+      render();
+    }
+    function resetDemo() {
+      Object.assign(state, { taskSent: false, packOn: false, running: false, gateOpen: false, gateResolved: false, gateApproved: false, prReady: false, logs: [] });
+      $("taskInput").value = "Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday.";
+      render();
+    }
+    function sendTask() {
+      state.taskSent = true;
+      state.prReady = false;
+      state.gateResolved = false;
+      state.logs = [];
+      render();
+    }
+    function enablePack() {
+      state.packOn = true;
+      $("checksModal").classList.remove("open");
+      if (!state.taskSent) state.taskSent = true;
+      render();
+    }
+    async function runAgent() {
+      if (state.running) return;
+      if (!state.taskSent) state.taskSent = true;
+      state.running = true;
+      state.prReady = false;
+      state.gateResolved = false;
+      state.gateApproved = false;
+      state.logs = [];
+      render();
+      const steps = state.packOn ? [
+        ["checkpoint created: before-security-pack-edits", "good"],
+        ["reading src/auth/refresh.ts, src/auth/sessionPolicy.ts", "dim"],
+        ["OWASP A01/A03/A07 context loaded", "accent"],
+        ["patched request schema validation", "good"],
+        ["removed token value from logs", "good"],
+        ["ran npm test -- auth: 42 passed", "good"],
+        ["ran secrets scan: no credential material in diff", "good"],
+        ["approval gate reached: DROP TABLE auth_tokens_v1", "warn"]
+      ] : [
+        ["reading src/auth/refresh.ts", "dim"],
+        ["patched request schema validation", "good"],
+        ["ran npm test -- auth: 42 passed", "good"],
+        ["running migration: DROP TABLE auth_tokens_v1", "warn"],
+        ["PR ready without domain-pack artifact", "good"]
+      ];
+      for (const [text, cls] of steps) {
+        await new Promise((resolve) => setTimeout(resolve, 450));
+        addLog(text, cls);
+      }
+      state.running = false;
+      if (state.packOn) {
+        state.gateOpen = true;
+        $("gateModal").classList.add("open");
+      } else {
+        state.prReady = true;
+      }
+      render();
+    }
+    function resolveGate(approved) {
+      state.gateOpen = false;
+      state.gateResolved = true;
+      state.gateApproved = approved;
+      state.prReady = true;
+      $("gateModal").classList.remove("open");
+      addLog(approved ? "approved by user: destructive migration included in PR" : "rejected by user: table retained, cleanup task added", approved ? "good" : "warn");
+      render();
+    }
+    function chatHtml() {
+      let html = "";
+      if (!state.taskSent) {
+        html += `<div class="banner"><div class="shield">✓</div><div><h2>Security-sensitive project detected</h2><p>Claude found auth routes, refresh-token logic, a legacy token table, and OWASP-relevant dependencies.</p><div class="actions"><button class="btn" id="inlineViewChecks">View checks</button><button class="btn accent" id="inlineEnable">Enable Pack</button><span class="tag accent">one-click setup</span></div></div></div>`;
+        html += msg("agent", "Claude Code", "Send the task below to simulate how the Pack changes the workflow.", ["Detected", "accent"]);
+        return html;
+      }
+      html += msg("user", "Developer", esc($("taskInput").value || "Refactor our refresh-token flow."), null);
+      if (!state.packOn) {
+        html += `<div class="banner"><div class="shield">!</div><div><h2>Enable Verified Security Pack?</h2><p>This task touches auth, tokens, and a destructive database migration. Enable the Pack for curated checks, approval gates, and PR security rationale.</p><div class="actions"><button class="btn" id="inlineViewChecks">View checks</button><button class="btn accent" id="inlineEnable">Enable Pack</button><button class="btn primary" id="inlineRunBase">Run without Pack</button></div></div></div>`;
+      }
+      html += `<div class="plan ${state.packOn ? "on" : ""}"><div class="plan-title"><span>${state.packOn ? "Verified Security Pack active" : "Base Claude Code plan"}</span><span class="tag ${state.packOn ? "accent" : ""}">${state.packOn ? "12 checks · 3 gates" : "manual config"}</span></div><div class="checks">
+        ${check("Create checkpoint", state.packOn ? "Snapshot before security-sensitive edits." : "Basic working-tree checkpoint.", state.logs.length > 0 ? "done" : "run", "checkpoint")}
+        ${check("Patch refresh-token validation", "Add request schema validation and remove token logging.", state.logs.length > 3 ? "done" : "run", "auth")}
+        ${check("Run tests and scans", state.packOn ? "npm test, secrets scan, dependency review." : "npm test only.", state.logs.length > 5 ? "done" : "run", "validation")}
+        ${check("DROP TABLE auth_tokens_v1", state.packOn ? "Requires explicit human approval." : "No approval gate configured.", state.packOn ? "gate" : "", state.packOn ? "gated" : "ungated")}
+      </div></div>`;
+      if (state.logs.length) {
+        html += `<div class="terminal"><div class="term-head"><span>agent run</span><span>${state.running ? "running" : "complete"}</span></div><div class="term-body">${state.logs.map((l) => `<div class="term-line ${l.cls}">› ${esc(l.text)}</div>`).join("")}</div></div>`;
+      }
+      if (state.gateResolved) {
+        html += msg("agent", "Claude Code", state.gateApproved ? "Destructive migration approved. PR includes the drop-table migration plus the security rationale artifact." : "Destructive migration rejected. PR keeps the legacy table and adds a follow-up cleanup task.", ["Gate resolved", state.gateApproved ? "good" : "warn"]);
+      }
+      if (state.prReady) {
+        html += msg("agent", "Claude Code", state.packOn ? "PR #412 is ready with security rationale, test output, secrets-scan result, and checkpoint summary attached." : "PR #412 is ready with code changes and unit-test output. No Security Pack artifact attached.", ["PR ready", "good"]);
+      }
+      return html;
+    }
+    function rightHtml() {
+      let html = `<div class="file"><div class="file-head"><span>src/auth/refresh.ts</span><span class="tag warn">security-sensitive</span></div><div class="code">
+        ${codeLine("", 1, "", "export async function refresh(req, res) {")}
+        ${codeLine("warnline", 2, "!", "  const { token } = req.body;")}
+        ${codeLine("", 3, "", "  const row = await db.query(")}
+        ${codeLine("", 4, "", "    \"SELECT * FROM auth_tokens_v1 WHERE token=$1\", [token]")}
+        ${codeLine("", 5, "", "  );")}
+        ${codeLine("warnline", 6, "!", "  console.log(\"refresh token\", token);")}
+        ${codeLine("", 7, "", "  return rotateSession(row.user_id);")}
+        ${codeLine("", 8, "", "}")}
+      </div></div>`;
+      if (state.logs.length > 2 || state.prReady) {
+        html = `<div class="file"><div class="file-head"><span>src/auth/refresh.ts</span><span class="tag good">patched</span></div><div class="code">
+          ${codeLine("add", 1, "+", "import { z } from \"zod\";")}
+          ${codeLine("add", 2, "+", "const RefreshBody = z.object({ token: z.string().min(32) });")}
+          ${codeLine("", 3, "", "export async function refresh(req, res) {")}
+          ${codeLine("del", 4, "-", "  const { token } = req.body;")}
+          ${codeLine("add", 4, "+", "  const parsed = RefreshBody.safeParse(req.body);")}
+          ${codeLine("add", 5, "+", "  if (!parsed.success) return res.status(400).json({ error: \"invalid_request\" });")}
+          ${codeLine("add", 6, "+", "  const { token } = parsed.data;")}
+          ${codeLine("del", 7, "-", "  console.log(\"refresh token\", token);")}
+          ${codeLine("add", 7, "+", "  audit.info(\"refresh token rotation requested\");")}
+          ${codeLine("", 8, "", "  return rotateSession(row.user_id);")}
+          ${codeLine("", 9, "", "}")}
+        </div></div>`;
+      }
+      if (state.gateOpen || state.gateResolved || state.prReady) {
+        html += `<div class="file"><div class="file-head"><span>migrations/2026_05_drop_legacy_tokens.sql</span><span class="tag ${state.gateApproved ? "good" : "warn"}">${state.gateApproved ? "approved" : "gated"}</span></div><div class="code">${codeLine(state.packOn && !state.gateApproved ? "warnline" : "del", 12, state.packOn && !state.gateApproved ? "!" : "-", "DROP TABLE IF EXISTS auth_tokens_v1;")}</div></div>`;
+      }
+      if (state.prReady) {
+        html += `<div class="card"><div class="eyebrow">PR artifact</div><div class="repo">PR #412 · Refresh-token migration</div><div class="sub">${state.packOn ? "Attached: security rationale, Pack checks, gate decision, test output, secrets scan, dependency review, rollback checkpoint." : "Attached: diff summary and unit-test output."}</div></div>`;
+      }
+      return html;
+    }
+    function render() {
+      $("chat").innerHTML = chatHtml();
+      $("right").innerHTML = rightHtml();
+      $("phaseLabel").textContent = state.prReady ? "PR ready" : state.running ? "running" : state.packOn ? "pack active" : state.taskSent ? "planning" : "detected";
+      $("rightLabel").textContent = state.prReady ? "PR output" : state.logs.length > 2 ? "diff" : "auth flow";
+      $("chromeState").textContent = state.packOn ? "Security Pack active" : "Pack available";
+      $("packCard").className = `card pack-card ${state.packOn ? "on" : state.taskSent ? "required" : ""}`;
+      $("packDot").className = `status-dot ${state.packOn ? "on" : state.taskSent ? "warn" : ""}`;
+      $("packSub").textContent = state.packOn ? "12 checks, 3 gates, checkpoints, and security rationale active." : state.taskSent ? "Recommended for this task." : "Detected but not enabled.";
+      $("mChecks").textContent = state.packOn ? (state.prReady ? "12/12" : state.logs.length > 5 ? "8/12" : "4/12") : "0/12";
+      $("mGates").textContent = state.packOn ? (state.gateResolved ? "1 resolved" : state.logs.length > 6 ? "1 open" : "3 armed") : "0";
+      $("mCheckpoints").textContent = state.logs.length ? (state.packOn ? "4" : "1") : "0";
+      $("mPr").textContent = state.prReady ? "ready" : state.running ? "running" : "not started";
+      $("enableBtn").disabled = state.packOn;
+      $("runBtn").disabled = state.running;
+      bindInline();
+    }
+    function bindInline() {
+      $("inlineViewChecks")?.addEventListener("click", () => $("checksModal").classList.add("open"));
+      $("inlineEnable")?.addEventListener("click", enablePack);
+      $("inlineRunBase")?.addEventListener("click", runAgent);
+    }
+    $("sendBtn").addEventListener("click", sendTask);
+    $("enableBtn").addEventListener("click", enablePack);
+    $("modalEnableBtn").addEventListener("click", enablePack);
+    $("viewChecksBtn").addEventListener("click", () => $("checksModal").classList.add("open"));
+    $("runBtn").addEventListener("click", runAgent);
+    $("resetBtn").addEventListener("click", resetDemo);
+    $("approveGateBtn").addEventListener("click", () => resolveGate(true));
+    $("rejectGateBtn").addEventListener("click", () => resolveGate(false));
+    document.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", () => $(b.dataset.close).classList.remove("open")));
+    document.querySelectorAll(".overlay").forEach((o) => o.addEventListener("click", (e) => { if (e.target === o) o.classList.remove("open"); }));
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") document.querySelectorAll(".overlay").forEach((o) => o.classList.remove("open"));
+      if ((e.metaKey || e.ctrlKey) && e.key === "Enter") sendTask();
+    });
+    render();
+  </script>
+</body>
+</html>

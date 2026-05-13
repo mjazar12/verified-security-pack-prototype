@@ -1,0 +1,3764 @@
+<!DOCTYPE html>
+<!-- saved from url=(0338)https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/v1/design/projects/019dfb64-1aa9-7248-9b56-bfdc79989e23/serve/Security%20Pack%20Prototype%20-%20CLI%20(standalone).html?t=92511ad4a27b0710a1d7c0aff3c37c43d4e883d7256a42bba4e2342d451adf77.4f06573b-b600-40a1-8c03-779b47d5105f.e66cf058-5cc4-4361-8641-642a65052e7b.1778639644 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>window.__resources = {};</script>
+
+<title>Verified Security Pack — CLI Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/fb8f5ef8-f446-4865-a003-f388f8481bae") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/3eeccfcc-4574-4ad0-8c08-590b16be5d3d") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/1c8c195a-441d-412b-8e44-465c965487f4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/9c5c6b26-f7d4-42fe-a44b-2d3b71cae178") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/fb8f5ef8-f446-4865-a003-f388f8481bae") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/3eeccfcc-4574-4ad0-8c08-590b16be5d3d") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/1c8c195a-441d-412b-8e44-465c965487f4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/9c5c6b26-f7d4-42fe-a44b-2d3b71cae178") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/fb8f5ef8-f446-4865-a003-f388f8481bae") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/3eeccfcc-4574-4ad0-8c08-590b16be5d3d") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/1c8c195a-441d-412b-8e44-465c965487f4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/9c5c6b26-f7d4-42fe-a44b-2d3b71cae178") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/6cf3565d-a6d8-44ab-8813-1ab9818ced3e") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/ea7d94ac-ac2a-47ba-a83d-e8fbbfbeaadc") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/e7dacdcc-d881-4491-b29d-337bcbd3cb6b") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/719910ab-ffef-434b-b5e8-d99ab71b477a") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/0736410c-e322-4f67-838d-9e99855d493f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/fc668721-d45b-4bc4-81a0-a571ca1433bb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/6cf3565d-a6d8-44ab-8813-1ab9818ced3e") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/ea7d94ac-ac2a-47ba-a83d-e8fbbfbeaadc") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/e7dacdcc-d881-4491-b29d-337bcbd3cb6b") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/719910ab-ffef-434b-b5e8-d99ab71b477a") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/0736410c-e322-4f67-838d-9e99855d493f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/fc668721-d45b-4bc4-81a0-a571ca1433bb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/6cf3565d-a6d8-44ab-8813-1ab9818ced3e") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/ea7d94ac-ac2a-47ba-a83d-e8fbbfbeaadc") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/e7dacdcc-d881-4491-b29d-337bcbd3cb6b") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/719910ab-ffef-434b-b5e8-d99ab71b477a") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/0736410c-e322-4f67-838d-9e99855d493f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/fc668721-d45b-4bc4-81a0-a571ca1433bb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/6cf3565d-a6d8-44ab-8813-1ab9818ced3e") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/ea7d94ac-ac2a-47ba-a83d-e8fbbfbeaadc") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/e7dacdcc-d881-4491-b29d-337bcbd3cb6b") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/719910ab-ffef-434b-b5e8-d99ab71b477a") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/0736410c-e322-4f67-838d-9e99855d493f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("blob:https://019dfb64-1aa9-7248-9b56-bfdc79989e23.claudeusercontent.com/fc668721-d45b-4bc4-81a0-a571ca1433bb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  :root {
+    /* page (wireframe outside the terminal) */
+    --paper:        #f6f1e8;
+    --paper-2:      #efe7d6;
+    --paper-3:      #e6dcc6;
+    --paper-ink:    #1f1b16;
+    --paper-ink-3:  #6b6359;
+    --paper-ink-4:  #9a9285;
+    --paper-rule:   #2a251e;
+
+    /* terminal palette — warm dark */
+    --term-bg:      #1c1814;
+    --term-bg-2:    #25201a;
+    --term-bg-3:    #2e2820;
+    --term-text:    #e8dfcc;
+    --term-dim:     #8a8275;
+    --term-dim-2:   #5a5347;
+    --term-rule:    #3a3328;
+    --term-accent:  #e8a473;     /* terracotta */
+    --term-accent-2:#c97f47;
+    --term-warn:    #e87a5a;
+    --term-warn-2:  #b85a3e;
+    --term-good:    #8fb872;
+    --term-info:    #9bbcd4;
+    --term-mute:    #b8aa92;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper-2);
+    color: var(--paper-ink);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,0,0,.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(0,0,0,.03) 0%, transparent 45%);
+    padding: 32px 24px 80px;
+  }
+
+  .hand { font-family: 'Caveat', cursive; font-weight: 600; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  .stage { max-width: 1280px; margin: 0 auto; }
+  .stage-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 24px; margin-bottom: 20px; padding: 0 8px;
+  }
+  .stage-title {
+    font-family: 'Caveat', cursive;
+    font-size: 38px; line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .stage-sub {
+    font-size: 11px; color: var(--paper-ink-3);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin-top: 6px;
+  }
+  .stage-meta {
+    font-size: 11px; color: var(--paper-ink-3);
+    text-align: right; line-height: 1.6;
+  }
+  .stage-meta b { color: var(--paper-ink); font-weight: 600; }
+  .stage-meta .pill {
+    display: inline-block;
+    border: 1.5px solid var(--paper-ink);
+    padding: 2px 8px; border-radius: 999px;
+    font-size: 10px; margin-left: 4px;
+    background: var(--paper);
+  }
+
+  /* terminal window chrome (mac-style) */
+  .window {
+    background: var(--term-bg);
+    border: 1.5px solid var(--paper-rule);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 12px 40px -16px rgba(0,0,0,.4);
+    position: relative;
+  }
+  .titlebar {
+    height: 36px;
+    background: var(--term-bg-3);
+    border-bottom: 1px solid var(--term-rule);
+    display: flex; align-items: center;
+    padding: 0 14px; gap: 8px;
+    color: var(--term-dim);
+  }
+  .traffic { display: flex; gap: 6px; }
+  .traffic span {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: rgba(0,0,0,.3);
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .titlebar-title {
+    flex: 1; text-align: center;
+    font-size: 11px; color: var(--term-dim);
+    letter-spacing: 0.5px;
+  }
+  .titlebar-right {
+    display: flex; gap: 12px; font-size: 11px; color: var(--term-dim);
+    align-items: center;
+  }
+  .titlebar-right .live-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--term-good);
+    box-shadow: 0 0 6px var(--term-good);
+  }
+
+  /* status bar — like tmux/claude code line */
+  .statusbar {
+    background: var(--term-bg-2);
+    border-bottom: 1px solid var(--term-rule);
+    padding: 8px 14px;
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: var(--term-dim);
+    gap: 16px;
+  }
+  .statusbar .group { display: flex; gap: 14px; }
+  .statusbar .seg { display: inline-flex; align-items: center; gap: 6px; }
+  .statusbar .seg b { color: var(--term-text); font-weight: 500; }
+  .statusbar .pack {
+    color: var(--term-accent);
+    border: 1px solid var(--term-accent-2);
+    padding: 1px 7px; border-radius: 3px;
+    font-size: 10px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .statusbar .pack.off {
+    color: var(--term-dim);
+    border-color: var(--term-dim-2);
+  }
+
+  /* terminal body */
+  .term {
+    background: var(--term-bg);
+    color: var(--term-text);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    padding: 18px 22px 24px;
+    min-height: 640px;
+    max-height: 720px;
+    overflow-y: auto;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--term-rule) transparent;
+  }
+  .term::-webkit-scrollbar { width: 8px; }
+  .term::-webkit-scrollbar-track { background: transparent; }
+  .term::-webkit-scrollbar-thumb { background: var(--term-rule); border-radius: 4px; }
+
+  /* prompts */
+  .prompt-line {
+    display: flex; gap: 8px; align-items: baseline;
+    margin: 14px 0 6px;
+  }
+  .prompt-line .arrow { color: var(--term-accent); font-weight: 700; }
+  .prompt-line .cwd   { color: var(--term-info); }
+  .prompt-line .input { color: var(--term-text); }
+  .cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--term-text);
+    vertical-align: -3px;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .dim   { color: var(--term-dim); }
+  .accent{ color: var(--term-accent); }
+  .accent-strong { color: var(--term-accent); font-weight: 600; }
+  .warn  { color: var(--term-warn); }
+  .good  { color: var(--term-good); }
+  .info  { color: var(--term-info); }
+  .mute  { color: var(--term-mute); }
+  .b     { font-weight: 700; }
+
+  /* boxes drawn with unicode + borders */
+  .box {
+    border: 1px solid var(--term-rule);
+    border-radius: 6px;
+    margin: 10px 0;
+    background: var(--term-bg-2);
+    overflow: hidden;
+  }
+  .box.accent { border-color: var(--term-accent-2); }
+  .box.warn   { border-color: var(--term-warn-2); }
+  .box-head {
+    padding: 6px 12px;
+    background: var(--term-bg-3);
+    border-bottom: 1px solid var(--term-rule);
+    font-size: 11px;
+    display: flex; justify-content: space-between;
+    align-items: center;
+    color: var(--term-mute);
+  }
+  .box.accent .box-head { background: rgba(232,164,115,.08); color: var(--term-accent); border-bottom-color: var(--term-accent-2); }
+  .box.warn   .box-head { background: rgba(232,122,90,.08);  color: var(--term-warn);  border-bottom-color: var(--term-warn-2); }
+  .box-body { padding: 10px 14px; font-size: 12px; }
+
+  /* output blocks */
+  .out { white-space: pre; font-size: 12.5px; }
+  .out .gutter { color: var(--term-dim-2); user-select: none; padding-right: 8px; }
+
+  /* trees / lists */
+  .tree { font-size: 12.5px; }
+  .tree .ln { display: flex; gap: 6px; align-items: baseline; margin: 2px 0; }
+  .tree .glyph { color: var(--term-dim); flex-shrink: 0; }
+  .tree .done  { color: var(--term-good); }
+  .tree .run   { color: var(--term-accent); }
+  .tree .gate  { color: var(--term-warn); }
+  .tree .pending { color: var(--term-dim); }
+
+  .kbd {
+    display: inline-block;
+    border: 1px solid var(--term-dim-2);
+    padding: 0 5px;
+    border-radius: 3px;
+    font-size: 10.5px;
+    color: var(--term-mute);
+    background: var(--term-bg-3);
+    line-height: 1.5;
+  }
+
+  /* diff hunks rendered in the terminal */
+  .diff {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: var(--term-bg);
+    padding: 8px 0;
+  }
+  .diff .row {
+    display: grid;
+    grid-template-columns: 36px 14px 1fr;
+    gap: 4px;
+    padding: 0 12px;
+    line-height: 1.55;
+  }
+  .diff .row.add  { background: rgba(143,184,114,.10); color: var(--term-good); }
+  .diff .row.del  { background: rgba(232,122,90,.10);  color: var(--term-warn); text-decoration: line-through; text-decoration-color: rgba(232,122,90,.35); }
+  .diff .row.ctx  { color: var(--term-dim); }
+  .diff .row .ln  { color: var(--term-dim-2); text-align: right; }
+  .diff .row .sign{ font-weight: 700; }
+
+  .rationale {
+    margin: 0;
+    padding: 8px 14px;
+    background: rgba(232,164,115,.06);
+    border-top: 1px dashed var(--term-accent-2);
+    font-size: 12px;
+    color: var(--term-mute);
+    display: flex; gap: 10px;
+  }
+  .rationale .tag {
+    flex-shrink: 0;
+    color: var(--term-accent);
+    font-weight: 700;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .rationale b { color: var(--term-text); }
+
+  /* inline approval prompt */
+  .approval {
+    margin: 14px 0 6px;
+    padding: 14px 16px;
+    border: 1px solid var(--term-warn-2);
+    background: rgba(232,122,90,.07);
+    border-radius: 6px;
+    font-size: 12.5px;
+  }
+  .approval .head {
+    display: flex; gap: 10px; align-items: center;
+    margin-bottom: 8px;
+  }
+  .approval .head .ico {
+    width: 22px; height: 22px;
+    border: 1.5px solid var(--term-warn);
+    border-radius: 50%;
+    color: var(--term-warn);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 12px;
+  }
+  .approval .ttl { color: var(--term-text); font-weight: 600; }
+  .approval .stmt {
+    background: var(--term-bg-3);
+    border-left: 2px solid var(--term-warn);
+    padding: 6px 10px;
+    margin: 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--term-text);
+    font-size: 12px;
+  }
+  .approval .preflight {
+    color: var(--term-dim);
+    font-size: 11.5px;
+    margin: 6px 0 10px;
+  }
+  .approval .preflight b { color: var(--term-text); font-weight: 500; }
+  .approval .ask { color: var(--term-text); font-weight: 500; margin-top: 6px; }
+  .approval .ask .choices { color: var(--term-warn); margin-left: 4px; }
+  .approval .options { display: flex; gap: 8px; margin-top: 10px; }
+  .approval-btn {
+    background: var(--term-bg-3);
+    border: 1px solid var(--term-rule);
+    color: var(--term-text);
+    padding: 5px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .approval-btn:hover { background: var(--term-rule); }
+  .approval-btn.primary {
+    background: var(--term-warn-2);
+    border-color: var(--term-warn-2);
+    color: white;
+  }
+
+  /* scenario bar / arm pills (same as wireframe) */
+  .scenario-bar {
+    margin: 24px auto 0;
+    max-width: 1280px;
+    background: var(--paper);
+    border: 1.5px solid var(--paper-rule);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex; justify-content: space-between;
+    align-items: center; gap: 16px;
+  }
+  .arm-pills {
+    display: flex;
+    border: 1.5px solid var(--paper-rule);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--paper-2);
+  }
+  .arm-pills button {
+    background: transparent; border: none;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--paper-ink); cursor: pointer;
+    border-right: 1.5px solid var(--paper-rule);
+  }
+  .arm-pills button:last-child { border-right: none; }
+  .arm-pills button.active { background: var(--paper-ink); color: var(--paper); }
+  .arm-pills button:hover:not(.active) { background: var(--paper-3); }
+
+  .step-stack {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; color: var(--paper-ink-3);
+  }
+  .step-stack .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
+  .step-dots { display: flex; gap: 4px; }
+  .step-dot {
+    width: 22px; height: 22px;
+    border: 1.5px solid var(--paper-rule);
+    border-radius: 50%;
+    background: var(--paper);
+    cursor: pointer;
+    font-size: 10px; font-weight: 600;
+    color: var(--paper-ink-3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-dot.active { background: var(--paper-ink); color: var(--paper); border-color: var(--paper-ink); }
+  .step-dot.done  { background: oklch(92% 0.04 55); color: oklch(40% 0.10 55); border-color: oklch(40% 0.10 55); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    background: var(--paper);
+    border: 1.5px solid var(--paper-rule);
+    border-radius: 6px;
+    color: var(--paper-ink);
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--paper-3); }
+  .btn.primary { background: var(--paper-ink); color: var(--paper); border-color: var(--paper-ink); }
+  .btn.small { padding: 4px 8px; font-size: 10px; }
+
+  /* legend */
+  .legend {
+    margin: 28px auto 0;
+    max-width: 1280px;
+    padding: 16px 20px;
+    background: var(--paper);
+    border: 1.5px dashed var(--paper-rule);
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    font-size: 11px;
+    color: var(--paper-ink-3);
+  }
+  .legend .item { display: flex; gap: 8px; align-items: flex-start; }
+  .legend .swatch {
+    width: 28px; height: 16px;
+    border: 1.5px solid var(--paper-rule);
+    border-radius: 3px;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .legend .swatch.term-bg { background: var(--term-bg); }
+  .legend .swatch.term-accent { background: rgba(232,164,115,.18); border-color: var(--term-accent-2); }
+  .legend .swatch.term-warn { background: rgba(232,122,90,.18); border-color: var(--term-warn-2); }
+  .legend .swatch.dash { border-style: dashed; }
+  .legend .item b { color: var(--paper-ink); font-weight: 600; }
+
+  .stage-footer {
+    max-width: 1280px;
+    margin: 32px auto 0;
+    padding: 0 8px;
+    font-size: 11px;
+    color: var(--paper-ink-3);
+    display: flex; justify-content: space-between; gap: 16px;
+  }
+
+  /* annotations layer (margin notes) */
+  .annotation {
+    position: absolute;
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    color: oklch(40% 0.10 55);
+    line-height: 1.1;
+    pointer-events: none;
+    z-index: 50;
+  }
+</style>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+"use strict";
+
+function _toArray(r) { return _arrayWithHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableRest(); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakColor  label="Palette" value={t.palette}
+//                        options={[['#D97757', '#29261b', '#f6f4ef'],
+//                                  ['#475569', '#0f172a', '#f1f5f9']]}
+//                        onChange={(v) => setTweak('palette', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+var __TWEAKS_STYLE = "\n  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;\n    max-height:calc(100vh - 32px);display:flex;flex-direction:column;\n    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;\n    background:rgba(250,249,247,.78);color:#29261b;\n    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);\n    border:.5px solid rgba(255,255,255,.6);border-radius:14px;\n    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);\n    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}\n  .twk-hd{display:flex;align-items:center;justify-content:space-between;\n    padding:10px 8px 10px 14px;cursor:move;user-select:none}\n  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}\n  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);\n    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}\n  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}\n  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;\n    overflow-y:auto;overflow-x:hidden;min-height:0;\n    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}\n  .twk-body::-webkit-scrollbar{width:8px}\n  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}\n  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;\n    border:2px solid transparent;background-clip:content-box}\n  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);\n    border:2px solid transparent;background-clip:content-box}\n  .twk-row{display:flex;flex-direction:column;gap:5px}\n  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}\n  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;\n    color:rgba(41,38,27,.72)}\n  .twk-lbl>span:first-child{font-weight:500}\n  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}\n\n  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;\n    color:rgba(41,38,27,.45);padding:10px 0 0}\n  .twk-sect:first-child{padding-top:0}\n\n  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;\n    border:.5px solid rgba(0,0,0,.1);border-radius:7px;\n    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}\n  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}\n  select.twk-field{padding-right:22px;\n    background-image:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>\");\n    background-repeat:no-repeat;background-position:right 8px center}\n\n  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;\n    border-radius:999px;background:rgba(0,0,0,.12);outline:none}\n  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;\n    width:14px;height:14px;border-radius:50%;background:#fff;\n    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}\n  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;\n    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}\n\n  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;\n    background:rgba(0,0,0,.06);user-select:none}\n  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;\n    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);\n    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}\n  .twk-seg.dragging .twk-seg-thumb{transition:none}\n  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;\n    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;\n    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;\n    overflow-wrap:anywhere}\n\n  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;\n    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}\n  .twk-toggle[data-on=\"1\"]{background:#34c759}\n  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;\n    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}\n  .twk-toggle[data-on=\"1\"] i{transform:translateX(14px)}\n\n  .twk-num{display:flex;align-items:center;height:26px;padding:0 0 0 8px;\n    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}\n  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;\n    user-select:none;padding-right:8px}\n  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;\n    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;\n    outline:none;color:inherit;-moz-appearance:textfield}\n  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{\n    -webkit-appearance:none;margin:0}\n  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}\n\n  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;\n    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}\n  .twk-btn:hover{background:rgba(0,0,0,.88)}\n  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}\n  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}\n\n  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;\n    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;\n    background:transparent;flex-shrink:0}\n  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}\n  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}\n  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}\n\n  .twk-chips{display:flex;gap:6px}\n  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;\n    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;\n    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);\n    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}\n  .twk-chip:hover{transform:translateY(-1px);\n    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}\n  .twk-chip[data-on=\"1\"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),\n    0 2px 6px rgba(0,0,0,.15)}\n  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;\n    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}\n  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}\n  .twk-chip>span>i:first-child{box-shadow:none}\n  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;\n    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}\n";
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  var _React$useState = React.useState(defaults),
+    _React$useState2 = _slicedToArray(_React$useState, 2),
+    values = _React$useState2[0],
+    setValues = _React$useState2[1];
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  var setTweak = React.useCallback(function (keyOrEdits, val) {
+    var edits = _typeof(keyOrEdits) === 'object' && keyOrEdits !== null ? keyOrEdits : _defineProperty({}, keyOrEdits, val);
+    setValues(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), edits);
+    });
+    window.parent.postMessage({
+      type: '__edit_mode_set_keys',
+      edits: edits
+    }, '*');
+    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
+    // can react — the parent message only reaches the host, not peers.
+    window.dispatchEvent(new CustomEvent('tweakchange', {
+      detail: edits
+    }));
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel(_ref2) {
+  var _ref2$title = _ref2.title,
+    title = _ref2$title === void 0 ? 'Tweaks' : _ref2$title,
+    _ref2$noDeckControls = _ref2.noDeckControls,
+    noDeckControls = _ref2$noDeckControls === void 0 ? false : _ref2$noDeckControls,
+    children = _ref2.children;
+  var _React$useState3 = React.useState(false),
+    _React$useState4 = _slicedToArray(_React$useState3, 2),
+    open = _React$useState4[0],
+    setOpen = _React$useState4[1];
+  var dragRef = React.useRef(null);
+  // Auto-inject a rail toggle when a <deck-stage> is on the page. The
+  // toggle drives the deck's per-viewer _railVisible via window message;
+  // state is mirrored from the same localStorage key the deck reads so
+  // the control reflects reality across reloads. The mechanism is the
+  // message — authors who want custom placement can post it directly
+  // and pass noDeckControls to suppress this one.
+  var hasDeckStage = React.useMemo(function () {
+    return typeof document !== 'undefined' && !!document.querySelector('deck-stage');
+  }, []);
+  var _React$useState5 = React.useState(function () {
+      try {
+        return localStorage.getItem('deck-stage.railVisible') !== '0';
+      } catch (e) {
+        return true;
+      }
+    }),
+    _React$useState6 = _slicedToArray(_React$useState5, 2),
+    railVisible = _React$useState6[0],
+    setRailVisible = _React$useState6[1];
+  var toggleRail = function toggleRail(on) {
+    setRailVisible(on);
+    window.postMessage({
+      type: '__deck_rail_visible',
+      on: on
+    }, '*');
+  };
+  var offsetRef = React.useRef({
+    x: 16,
+    y: 16
+  });
+  var PAD = 16;
+  var clampToViewport = React.useCallback(function () {
+    var panel = dragRef.current;
+    if (!panel) return;
+    var w = panel.offsetWidth,
+      h = panel.offsetHeight;
+    var maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    var maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y))
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+  React.useEffect(function () {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return function () {
+        return window.removeEventListener('resize', clampToViewport);
+      };
+    }
+    var ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return function () {
+      return ro.disconnect();
+    };
+  }, [open, clampToViewport]);
+  React.useEffect(function () {
+    var onMsg = function onMsg(e) {
+      var _e$data;
+      var t = e === null || e === void 0 || (_e$data = e.data) === null || _e$data === void 0 ? void 0 : _e$data.type;
+      if (t === '__activate_edit_mode') setOpen(true);else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({
+      type: '__edit_mode_available'
+    }, '*');
+    return function () {
+      return window.removeEventListener('message', onMsg);
+    };
+  }, []);
+  var dismiss = function dismiss() {
+    setOpen(false);
+    window.parent.postMessage({
+      type: '__edit_mode_dismissed'
+    }, '*');
+  };
+  var onDragStart = function onDragStart(e) {
+    var panel = dragRef.current;
+    if (!panel) return;
+    var r = panel.getBoundingClientRect();
+    var sx = e.clientX,
+      sy = e.clientY;
+    var startRight = window.innerWidth - r.right;
+    var startBottom = window.innerHeight - r.bottom;
+    var move = function move(ev) {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy)
+      };
+      clampToViewport();
+    };
+    var _up = function up() {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', _up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', _up);
+  };
+  if (!open) return null;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, __TWEAKS_STYLE), /*#__PURE__*/React.createElement("div", {
+    ref: dragRef,
+    className: "twk-panel",
+    "data-noncommentable": "",
+    style: {
+      right: offsetRef.current.x,
+      bottom: offsetRef.current.y
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-hd",
+    onMouseDown: onDragStart
+  }, /*#__PURE__*/React.createElement("b", null, title), /*#__PURE__*/React.createElement("button", {
+    className: "twk-x",
+    "aria-label": "Close tweaks",
+    onMouseDown: function onMouseDown(e) {
+      return e.stopPropagation();
+    },
+    onClick: dismiss
+  }, "\u2715")), /*#__PURE__*/React.createElement("div", {
+    className: "twk-body"
+  }, hasDeckStage && !noDeckControls && /*#__PURE__*/React.createElement(TweakSection, {
+    label: "Deck"
+  }, /*#__PURE__*/React.createElement(TweakToggle, {
+    label: "Thumbnail rail",
+    value: railVisible,
+    onChange: toggleRail
+  })), children)));
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection(_ref3) {
+  var label = _ref3.label,
+    children = _ref3.children;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "twk-sect"
+  }, label), children);
+}
+function TweakRow(_ref4) {
+  var label = _ref4.label,
+    value = _ref4.value,
+    children = _ref4.children,
+    _ref4$inline = _ref4.inline,
+    inline = _ref4$inline === void 0 ? false : _ref4$inline;
+  return /*#__PURE__*/React.createElement("div", {
+    className: inline ? 'twk-row twk-row-h' : 'twk-row'
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-lbl"
+  }, /*#__PURE__*/React.createElement("span", null, label), value != null && /*#__PURE__*/React.createElement("span", {
+    className: "twk-val"
+  }, value)), children);
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider(_ref5) {
+  var label = _ref5.label,
+    value = _ref5.value,
+    _ref5$min = _ref5.min,
+    min = _ref5$min === void 0 ? 0 : _ref5$min,
+    _ref5$max = _ref5.max,
+    max = _ref5$max === void 0 ? 100 : _ref5$max,
+    _ref5$step = _ref5.step,
+    step = _ref5$step === void 0 ? 1 : _ref5$step,
+    _ref5$unit = _ref5.unit,
+    unit = _ref5$unit === void 0 ? '' : _ref5$unit,
+    _onChange = _ref5.onChange;
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label,
+    value: "".concat(value).concat(unit)
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "range",
+    className: "twk-slider",
+    min: min,
+    max: max,
+    step: step,
+    value: value,
+    onChange: function onChange(e) {
+      return _onChange(Number(e.target.value));
+    }
+  }));
+}
+function TweakToggle(_ref6) {
+  var label = _ref6.label,
+    value = _ref6.value,
+    onChange = _ref6.onChange;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "twk-row twk-row-h"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-lbl"
+  }, /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "twk-toggle",
+    "data-on": value ? '1' : '0',
+    role: "switch",
+    "aria-checked": !!value,
+    onClick: function onClick() {
+      return onChange(!value);
+    }
+  }, /*#__PURE__*/React.createElement("i", null)));
+}
+function TweakRadio(_ref7) {
+  var _$3$options$length;
+  var label = _ref7.label,
+    value = _ref7.value,
+    options = _ref7.options,
+    _onChange2 = _ref7.onChange;
+  var trackRef = React.useRef(null);
+  var _React$useState7 = React.useState(false),
+    _React$useState8 = _slicedToArray(_React$useState7, 2),
+    dragging = _React$useState8[0],
+    setDragging = _React$useState8[1];
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  var valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  // Segments wrap mid-word once per-segment width runs out. The track is
+  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
+  // back to a dropdown rather than wrap.
+  var labelLen = function labelLen(o) {
+    return String(_typeof(o) === 'object' ? o.label : o).length;
+  };
+  var maxLen = options.reduce(function (m, o) {
+    return Math.max(m, labelLen(o));
+  }, 0);
+  var fitsAsSegments = maxLen <= ((_$3$options$length = {
+    2: 16,
+    3: 10
+  }[options.length]) !== null && _$3$options$length !== void 0 ? _$3$options$length : 0);
+  if (!fitsAsSegments) {
+    // <select> emits strings — map back to the original option value so the
+    // fallback stays type-preserving (numbers, booleans) like the segment path.
+    var resolve = function resolve(s) {
+      var m = options.find(function (o) {
+        return String(_typeof(o) === 'object' ? o.value : o) === s;
+      });
+      return m === undefined ? s : _typeof(m) === 'object' ? m.value : m;
+    };
+    return /*#__PURE__*/React.createElement(TweakSelect, {
+      label: label,
+      value: value,
+      options: options,
+      onChange: function onChange(s) {
+        return _onChange2(resolve(s));
+      }
+    });
+  }
+  var opts = options.map(function (o) {
+    return _typeof(o) === 'object' ? o : {
+      value: o,
+      label: o
+    };
+  });
+  var idx = Math.max(0, opts.findIndex(function (o) {
+    return o.value === value;
+  }));
+  var n = opts.length;
+  var segAt = function segAt(clientX) {
+    var r = trackRef.current.getBoundingClientRect();
+    var inner = r.width - 4;
+    var i = Math.floor((clientX - r.left - 2) / inner * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+  var onPointerDown = function onPointerDown(e) {
+    setDragging(true);
+    var v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) _onChange2(v0);
+    var move = function move(ev) {
+      if (!trackRef.current) return;
+      var v = segAt(ev.clientX);
+      if (v !== valueRef.current) _onChange2(v);
+    };
+    var _up2 = function up() {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', _up2);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', _up2);
+  };
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("div", {
+    ref: trackRef,
+    role: "radiogroup",
+    onPointerDown: onPointerDown,
+    className: dragging ? 'twk-seg dragging' : 'twk-seg'
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-seg-thumb",
+    style: {
+      left: "calc(2px + ".concat(idx, " * (100% - 4px) / ").concat(n, ")"),
+      width: "calc((100% - 4px) / ".concat(n, ")")
+    }
+  }), opts.map(function (o) {
+    return /*#__PURE__*/React.createElement("button", {
+      key: o.value,
+      type: "button",
+      role: "radio",
+      "aria-checked": o.value === value
+    }, o.label);
+  })));
+}
+function TweakSelect(_ref8) {
+  var label = _ref8.label,
+    value = _ref8.value,
+    options = _ref8.options,
+    _onChange3 = _ref8.onChange;
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("select", {
+    className: "twk-field",
+    value: value,
+    onChange: function onChange(e) {
+      return _onChange3(e.target.value);
+    }
+  }, options.map(function (o) {
+    var v = _typeof(o) === 'object' ? o.value : o;
+    var l = _typeof(o) === 'object' ? o.label : o;
+    return /*#__PURE__*/React.createElement("option", {
+      key: v,
+      value: v
+    }, l);
+  })));
+}
+function TweakText(_ref9) {
+  var label = _ref9.label,
+    value = _ref9.value,
+    placeholder = _ref9.placeholder,
+    _onChange4 = _ref9.onChange;
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "twk-field",
+    type: "text",
+    value: value,
+    placeholder: placeholder,
+    onChange: function onChange(e) {
+      return _onChange4(e.target.value);
+    }
+  }));
+}
+function TweakNumber(_ref0) {
+  var label = _ref0.label,
+    value = _ref0.value,
+    min = _ref0.min,
+    max = _ref0.max,
+    _ref0$step = _ref0.step,
+    step = _ref0$step === void 0 ? 1 : _ref0$step,
+    _ref0$unit = _ref0.unit,
+    unit = _ref0$unit === void 0 ? '' : _ref0$unit,
+    _onChange5 = _ref0.onChange;
+  var clamp = function clamp(n) {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  var startRef = React.useRef({
+    x: 0,
+    val: 0
+  });
+  var onScrubStart = function onScrubStart(e) {
+    e.preventDefault();
+    startRef.current = {
+      x: e.clientX,
+      val: value
+    };
+    var decimals = (String(step).split('.')[1] || '').length;
+    var move = function move(ev) {
+      var dx = ev.clientX - startRef.current.x;
+      var raw = startRef.current.val + dx * step;
+      var snapped = Math.round(raw / step) * step;
+      _onChange5(clamp(Number(snapped.toFixed(decimals))));
+    };
+    var _up3 = function up() {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', _up3);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', _up3);
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "twk-num"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "twk-num-lbl",
+    onPointerDown: onScrubStart
+  }, label), /*#__PURE__*/React.createElement("input", {
+    type: "number",
+    value: value,
+    min: min,
+    max: max,
+    step: step,
+    onChange: function onChange(e) {
+      return _onChange5(clamp(Number(e.target.value)));
+    }
+  }), unit && /*#__PURE__*/React.createElement("span", {
+    className: "twk-num-unit"
+  }, unit));
+}
+
+// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// read on both #111 and #fafafa without per-option configuration. Hex input
+// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
+function __twkIsLight(hex) {
+  var h = String(hex).replace('#', '');
+  var x = h.length === 3 ? h.replace(/./g, function (c) {
+    return c + c;
+  }) : h.padEnd(6, '0');
+  var n = parseInt(x.slice(0, 6), 16);
+  if (Number.isNaN(n)) return true;
+  var r = n >> 16 & 255,
+    g = n >> 8 & 255,
+    b = n & 255;
+  return r * 299 + g * 587 + b * 114 > 148000;
+}
+var __TwkCheck = function __TwkCheck(_ref1) {
+  var light = _ref1.light;
+  return /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 14 14",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M3 7.2 5.8 10 11 4.2",
+    fill: "none",
+    strokeWidth: "2.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    stroke: light ? 'rgba(0,0,0,.78)' : '#fff'
+  }));
+};
+
+// TweakColor — curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
+// rest stacked in a sharp column on the right. onChange emits the
+// option in the shape it was passed (string stays string, array stays array).
+// Without options it falls back to the native color input for back-compat.
+function TweakColor(_ref10) {
+  var label = _ref10.label,
+    value = _ref10.value,
+    options = _ref10.options,
+    _onChange6 = _ref10.onChange;
+  if (!options || !options.length) {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "twk-row twk-row-h"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "twk-lbl"
+    }, /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("input", {
+      type: "color",
+      className: "twk-swatch",
+      value: value,
+      onChange: function onChange(e) {
+        return _onChange6(e.target.value);
+      }
+    }));
+  }
+  // Native <input type=color> emits lowercase hex per the HTML spec, so
+  // compare case-insensitively. String() guards JSON.stringify(undefined),
+  // which returns the primitive undefined (no .toLowerCase).
+  var key = function key(o) {
+    return String(JSON.stringify(o)).toLowerCase();
+  };
+  var cur = key(value);
+  return /*#__PURE__*/React.createElement(TweakRow, {
+    label: label
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "twk-chips",
+    role: "radiogroup"
+  }, options.map(function (o, i) {
+    var colors = Array.isArray(o) ? o : [o];
+    var _colors = _toArray(colors),
+      hero = _colors[0],
+      rest = _arrayLikeToArray(_colors).slice(1);
+    var sup = rest.slice(0, 4);
+    var on = key(o) === cur;
+    return /*#__PURE__*/React.createElement("button", {
+      key: i,
+      type: "button",
+      className: "twk-chip",
+      role: "radio",
+      "aria-checked": on,
+      "data-on": on ? '1' : '0',
+      "aria-label": colors.join(', '),
+      title: colors.join(' · '),
+      style: {
+        background: hero
+      },
+      onClick: function onClick() {
+        return _onChange6(o);
+      }
+    }, sup.length > 0 && /*#__PURE__*/React.createElement("span", null, sup.map(function (c, j) {
+      return /*#__PURE__*/React.createElement("i", {
+        key: j,
+        style: {
+          background: c
+        }
+      });
+    })), on && /*#__PURE__*/React.createElement(__TwkCheck, {
+      light: __twkIsLight(hero)
+    }));
+  })));
+}
+function TweakButton(_ref11) {
+  var label = _ref11.label,
+    onClick = _ref11.onClick,
+    _ref11$secondary = _ref11.secondary,
+    secondary = _ref11$secondary === void 0 ? false : _ref11$secondary;
+  return /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: secondary ? 'twk-btn secondary' : 'twk-btn',
+    onClick: onClick
+  }, label);
+}
+Object.assign(window, {
+  useTweaks: useTweaks,
+  TweaksPanel: TweaksPanel,
+  TweakSection: TweakSection,
+  TweakRow: TweakRow,
+  TweakSlider: TweakSlider,
+  TweakToggle: TweakToggle,
+  TweakRadio: TweakRadio,
+  TweakSelect: TweakSelect,
+  TweakText: TweakText,
+  TweakNumber: TweakNumber,
+  TweakColor: TweakColor,
+  TweakButton: TweakButton
+});</script><script>"use strict";
+
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+/* global React, ReactDOM, TweaksPanel, useTweaks, TweakSection, TweakRadio, TweakToggle, TweakSelect */
+var _React = React,
+  useState = _React.useState,
+  useEffect = _React.useEffect,
+  useMemo = _React.useMemo;
+var TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "arm": "T1",
+  "step": 1,
+  "showAnnotations": true
+} /*EDITMODE-END*/;
+var STEP_LABELS = ["Detect", "Inspect Pack", "Plan Mode", "Execute", "Approval Gate", "PR Ready"];
+
+// ============================================================================
+// PRIMITIVES
+// ============================================================================
+function PromptLine(_ref) {
+  var _ref$cwd = _ref.cwd,
+    cwd = _ref$cwd === void 0 ? "~/payments-api" : _ref$cwd,
+    _ref$branch = _ref.branch,
+    branch = _ref$branch === void 0 ? "feat/auth-refresh-tokens" : _ref$branch,
+    input = _ref.input,
+    cursor = _ref.cursor;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "prompt-line"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "arrow"
+  }, "\u276F"), /*#__PURE__*/React.createElement("span", {
+    className: "cwd"
+  }, cwd), /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "git:(", branch, ")"), /*#__PURE__*/React.createElement("span", {
+    className: "input"
+  }, input, cursor && /*#__PURE__*/React.createElement("span", {
+    className: "cursor"
+  })));
+}
+function Out(_ref2) {
+  var children = _ref2.children,
+    _ref2$indent = _ref2.indent,
+    indent = _ref2$indent === void 0 ? 0 : _ref2$indent;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "out",
+    style: {
+      paddingLeft: indent * 8
+    }
+  }, children);
+}
+function Tree(_ref3) {
+  var rows = _ref3.rows;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "tree"
+  }, rows.map(function (r, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "ln",
+      style: {
+        paddingLeft: (r.indent || 0) * 14
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "glyph ".concat(r.state || '')
+    }, r.glyph || (r.state === 'done' ? '✓' : r.state === 'run' ? '◐' : r.state === 'gate' ? '⚠' : '○')), /*#__PURE__*/React.createElement("span", {
+      className: r.state === 'done' ? 'dim' : r.state === 'run' ? 'accent-strong' : r.state === 'gate' ? 'warn' : ''
+    }, r.text, r.note && /*#__PURE__*/React.createElement("span", {
+      className: "dim",
+      style: {
+        marginLeft: 8
+      }
+    }, "\xB7 ", r.note), r.tag && /*#__PURE__*/React.createElement("span", {
+      className: "dim",
+      style: {
+        marginLeft: 8,
+        fontSize: 11
+      }
+    }, "[", r.tag, "]")));
+  }));
+}
+function Box(_ref4) {
+  var title = _ref4.title,
+    badge = _ref4.badge,
+    headerRight = _ref4.headerRight,
+    accent = _ref4.accent,
+    warn = _ref4.warn,
+    children = _ref4.children;
+  var cls = accent ? 'box accent' : warn ? 'box warn' : 'box';
+  return /*#__PURE__*/React.createElement("div", {
+    className: cls
+  }, title && /*#__PURE__*/React.createElement("div", {
+    className: "box-head"
+  }, /*#__PURE__*/React.createElement("span", null, title, " ", badge && /*#__PURE__*/React.createElement("span", {
+    style: {
+      opacity: .7,
+      marginLeft: 8
+    }
+  }, badge)), headerRight), /*#__PURE__*/React.createElement("div", {
+    className: "box-body"
+  }, children));
+}
+
+// ============================================================================
+// STEP CONTENT
+// ============================================================================
+
+// ---- Step 1: Detection -----------------------------------------------------
+function StepDetect(_ref5) {
+  var arm = _ref5.arm;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "# booting claude code v1.42.0 \xB7 payments-api")), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  reading CLAUDE.md (2.4 KB) \xB7 loading skills \xB7 connecting MCP (3 servers)")), arm === 'T1' && /*#__PURE__*/React.createElement(Box, {
+    title: "\uD83D\uDEE1 security-sensitive project detected",
+    badge: /*#__PURE__*/React.createElement("span", {
+      className: "accent"
+    }, "verified pack"),
+    accent: true
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 8
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mute"
+  }, "Signals:"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "auth/refresh.ts"), ", ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, ".env.production"), ", ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "jsonwebtoken@9.0"), ", ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "bcrypt@5.1")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 10
+    }
+  }, "Anthropic ships a curated ", /*#__PURE__*/React.createElement("span", {
+    className: "accent-strong"
+  }, "Verified Security Pack"), " tuned for this kind of repo: OWASP-aware skills, scoped tool permissions, and approval gates on destructive actions."), /*#__PURE__*/React.createElement("div", {
+    className: "mute",
+    style: {
+      fontSize: 11.5
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "b",
+    style: {
+      color: 'var(--term-text)'
+    }
+  }, "What now?"), " press ", /*#__PURE__*/React.createElement("span", {
+    className: "kbd"
+  }, "i"), " to inspect \xB7 ", /*#__PURE__*/React.createElement("span", {
+    className: "kbd"
+  }, "y"), " to enable \xB7 ", /*#__PURE__*/React.createElement("span", {
+    className: "kbd"
+  }, "n"), " not now \xB7 ", /*#__PURE__*/React.createElement("span", {
+    className: "kbd"
+  }, "/security-pack"), " anytime")), arm === 'T2' && /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  domain packs available \u2014 run "), /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "/packs"), /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, " to view")), arm === 'C' && /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  no domain configuration applied \xB7 using base settings")), /*#__PURE__*/React.createElement(PromptLine, {
+    input: arm === 'T1' ? "Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday." : arm === 'T2' ? "Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday." : "Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday.",
+    cursor: true
+  }));
+}
+
+// ---- Step 2: Inspect pack --------------------------------------------------
+function StepInspect(_ref6) {
+  var arm = _ref6.arm;
+  // For T2, show the /packs list first (since they had to discover it),
+  // then drill into security. For T1, drill in directly.
+  return /*#__PURE__*/React.createElement(React.Fragment, null, arm === 'T2' && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PromptLine, {
+    input: "/packs"
+  }), /*#__PURE__*/React.createElement(Out, null, "  AVAILABLE   DOMAIN PACKS                             STATUS\n  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  \u25B8 security  OWASP, auth, secrets, dep scan, gates    available\n    web-dev   React/Next, accessibility, perf          available\n    data-sci  notebook safety, PII, reproducibility    available\n    devops    IaC review, CI hardening                 coming\n    mobile    iOS/Android, ATS, keychain               coming\n    api       OpenAPI, auth flows, rate limits         coming\n\n  run ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "/packs inspect security"), /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, " to view details")), /*#__PURE__*/React.createElement(PromptLine, {
+    input: "/packs inspect security"
+  })), arm !== 'T2' && /*#__PURE__*/React.createElement(PromptLine, {
+    input: "/security-pack"
+  }), /*#__PURE__*/React.createElement(Box, {
+    title: "\uD83D\uDEE1 verified security pack \xB7 v1.0",
+    badge: /*#__PURE__*/React.createElement("span", {
+      className: "dim"
+    }, "curated by anthropic \xB7 last reviewed apr 2026"),
+    accent: true
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '8px 10px',
+      marginBottom: 12,
+      border: '1px dashed var(--term-warn-2)',
+      background: 'rgba(232,122,90,.06)',
+      borderRadius: 4,
+      fontSize: 11.5,
+      color: 'var(--term-mute)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "warn b"
+  }, "! not a security guarantee."), " this pack improves security-aware development. it does not certify your codebase. you remain responsible for code review, security review, and any required audits."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: 18
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "accent-strong",
+    style: {
+      fontSize: 11,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5,
+      marginBottom: 6
+    }
+  }, "vulnerability checks ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "(8)")), /*#__PURE__*/React.createElement(Tree, {
+    rows: [{
+      glyph: '•',
+      text: 'OWASP Top 10 (2025) coverage'
+    }, {
+      glyph: '•',
+      text: 'Input validation on untrusted boundaries'
+    }, {
+      glyph: '•',
+      text: 'Auth & access-control review'
+    }, {
+      glyph: '•',
+      text: 'Secrets & PII handling'
+    }, {
+      glyph: '•',
+      text: 'Dependency vulnerability scan'
+    }, {
+      glyph: '•',
+      text: 'Indirect prompt-injection detector'
+    }, {
+      glyph: '•',
+      text: 'Dangerous-pattern interrupt',
+      note: 'eval, disabled TLS, hardcoded keys'
+    }, {
+      glyph: '•',
+      text: 'Crypto primitive review'
+    }]
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "accent-strong",
+    style: {
+      fontSize: 11,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5,
+      margin: '14px 0 6px'
+    }
+  }, "allowed tools ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "(6, scoped)")), /*#__PURE__*/React.createElement(Tree, {
+    rows: [{
+      glyph: '→',
+      text: 'Read',
+      note: 'excludes .env*, secret globs'
+    }, {
+      glyph: '→',
+      text: 'Edit',
+      note: 'diff preview required',
+      tag: 'gated'
+    }, {
+      glyph: '→',
+      text: 'Bash · whitelisted',
+      note: 'npm test, pytest, semgrep, codeql'
+    }, {
+      glyph: '→',
+      text: 'DB read'
+    }, {
+      glyph: '→',
+      text: 'DB write',
+      tag: 'gated'
+    }, {
+      glyph: '→',
+      text: 'Git',
+      note: 'no force-push'
+    }]
+  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "warn b",
+    style: {
+      fontSize: 11,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5,
+      marginBottom: 6
+    }
+  }, "approval gates ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "(3)")), /*#__PURE__*/React.createElement(Tree, {
+    rows: [{
+      glyph: '⚠',
+      state: 'gate',
+      text: 'Destructive DB ops',
+      note: 'DROP, TRUNCATE, schema'
+    }, {
+      glyph: '⚠',
+      state: 'gate',
+      text: 'Modifying access-control logic',
+      note: 'role checks, perm grants'
+    }, {
+      glyph: '⚠',
+      state: 'gate',
+      text: 'Disabling security middleware',
+      note: 'CSRF, CORS, rate limit, TLS'
+    }]
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "warn b",
+    style: {
+      fontSize: 11,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5,
+      margin: '14px 0 6px'
+    }
+  }, "blocked by default ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "(4)")), /*#__PURE__*/React.createElement(Tree, {
+    rows: [{
+      glyph: '✕',
+      state: 'gate',
+      text: 'Push to remote without confirm'
+    }, {
+      glyph: '✕',
+      state: 'gate',
+      text: 'eval/exec of untrusted input'
+    }, {
+      glyph: '✕',
+      state: 'gate',
+      text: 'Disabling TLS verification'
+    }, {
+      glyph: '✕',
+      state: 'gate',
+      text: 'Writing to .env.* files'
+    }]
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "dim",
+    style: {
+      fontSize: 11,
+      marginTop: 14
+    }
+  }, "override anytime via ", /*#__PURE__*/React.createElement("span", {
+    className: "info mono"
+  }, "/pack override"), " \xB7 all overrides logged \xB7 checkpoint rollback enabled per edit.")))), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  enable this pack for the current session? "), /*#__PURE__*/React.createElement("span", {
+    className: "b"
+  }, "[Y/n]"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "cursor"
+  })));
+}
+
+// ---- Step 3: Plan Mode -----------------------------------------------------
+function StepPlan(_ref7) {
+  var packOn = _ref7.packOn;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PromptLine, {
+    input: packOn ? "y" : "/plan"
+  }), packOn && /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "  \u2713 security pack enabled"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "\xB7 loaded 8 skills \xB7 scoped 6 tools \xB7 armed 3 gates \xB7 4 blocks")), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  entering plan mode\u2026")), /*#__PURE__*/React.createElement(Box, {
+    title: packOn ? "▸ plan · security-aware" : "▸ plan",
+    badge: packOn && /*#__PURE__*/React.createElement("span", {
+      className: "accent"
+    }, "\uD83D\uDEE1 pack active"),
+    accent: packOn
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "b",
+    style: {
+      color: 'var(--term-text)'
+    }
+  }, "Goal."), " ", /*#__PURE__*/React.createElement("span", {
+    className: "mute"
+  }, "Refactor refresh-token flow in ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "src/auth/refresh.ts"), " to use the new ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "auth_sessions"), " store. Drop legacy ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "auth_tokens_v1"), " after backfill.")), packOn && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 10,
+      color: 'var(--term-mute)',
+      fontSize: 11.5
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "accent-strong"
+  }, "Security context loaded:"), " OWASP A01 (access control), A03 (injection), A07 (auth failures). Crypto primitives in ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "jsonwebtoken@9.0"), " reviewed. Dependency advisory DB scanned (clean)."), /*#__PURE__*/React.createElement(Tree, {
+    rows: [{
+      state: 'done',
+      text: 'Read src/auth/refresh.ts + auth_sessions schema'
+    }].concat(_toConsumableArray(packOn ? [{
+      state: 'done',
+      text: 'Cross-reference OWASP A01 / A03 / A07',
+      note: 'pack skill'
+    }] : []), [{
+      state: 'pending',
+      text: packOn ? 'Add zod input validation on /refresh' : 'Add input validation on /refresh',
+      note: packOn ? 'closes A03' : null
+    }, {
+      state: 'pending',
+      text: packOn ? 'Update access-control check (admin path)' : 'Update access-control check',
+      tag: packOn ? 'GATE' : null
+    }, {
+      state: 'pending',
+      text: 'Backfill refresh tokens → auth_sessions',
+      note: '487 records · snapshot first'
+    }, {
+      state: 'pending',
+      text: 'DROP TABLE auth_tokens_v1',
+      tag: packOn ? 'GATE · approval required' : null
+    }, {
+      state: 'pending',
+      text: packOn ? 'Run npm test + semgrep + codeql' : 'Run npm test'
+    }, {
+      state: 'pending',
+      text: 'Open PR #412'
+    }])
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 14,
+      fontSize: 11.5,
+      color: 'var(--term-mute)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "b",
+    style: {
+      color: 'var(--term-text)'
+    }
+  }, "Tools needed:"), ' ', (packOn ? ['Read', 'Edit (gated)', 'npm test', 'semgrep', 'codeql', 'DB read', 'DB write (gated)'] : ['Read', 'Edit', 'Bash', 'DB read', 'DB write']).map(function (t, i, a) {
+    return /*#__PURE__*/React.createElement("span", {
+      key: t
+    }, /*#__PURE__*/React.createElement("span", {
+      className: packOn ? 'accent' : 'info'
+    }, t), i < a.length - 1 ? /*#__PURE__*/React.createElement("span", {
+      className: "dim"
+    }, ", ") : null);
+  })), packOn && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 6,
+      fontSize: 11.5,
+      color: 'var(--term-mute)'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "b",
+    style: {
+      color: 'var(--term-text)'
+    }
+  }, "Expected gates:"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "warn"
+  }, "1 destructive (DROP)"), /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, ", "), /*#__PURE__*/React.createElement("span", {
+    className: "warn"
+  }, "1 access-control change"))), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  proceed with plan? "), /*#__PURE__*/React.createElement("span", {
+    className: "b"
+  }, "[Y/n/edit]"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "cursor"
+  })));
+}
+
+// ---- Step 4: Execute -------------------------------------------------------
+function StepExecute(_ref8) {
+  var packOn = _ref8.packOn;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PromptLine, {
+    input: "y"
+  }), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  executing plan \xB7 step 2/6 \xB7 adding input validation")), /*#__PURE__*/React.createElement(Tree, {
+    rows: [{
+      state: 'done',
+      text: 'Read src/auth/refresh.ts (84 lines)'
+    }, {
+      state: 'done',
+      text: 'Read db/migrations/auth_sessions.sql (41 lines)'
+    }].concat(_toConsumableArray(packOn ? [{
+      state: 'done',
+      text: 'Pre-scan: semgrep · 0 new findings',
+      note: 'pack tool'
+    }] : []), [{
+      state: 'run',
+      text: 'Writing diff: zod schema for refresh body'
+    }])
+  }), /*#__PURE__*/React.createElement(Box, {
+    title: "\u25CF edit \xB7 src/auth/refresh.ts",
+    badge: /*#__PURE__*/React.createElement("span", {
+      className: "dim"
+    }, "+12 \u22122 \xB7 proposed")
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "diff"
+  }, [['ctx', 1, ' ', 'import { db } from "../db";'], ['add', 2, '+', 'import { z } from "zod";'], ['ctx', 3, ' ', ''], ['add', 4, '+', 'const RefreshBody = z.object({'], ['add', 5, '+', '  token: z.string().min(32).max(512),'], ['add', 6, '+', '  device_id: z.string().uuid().optional(),'], ['add', 7, '+', '});'], ['ctx', 8, ' ', ''], ['ctx', 9, ' ', 'export async function refresh(req, res) {'], ['del', 10, '-', '  const { token } = req.body;'], ['add', 10, '+', '  const parsed = RefreshBody.safeParse(req.body);'], ['add', 11, '+', '  if (!parsed.success) return res.status(400).json({error:"bad_request"});'], ['add', 12, '+', '  const { token } = parsed.data;'], ['ctx', 13, ' ', '']].map(function (_ref9, i) {
+    var _ref0 = _slicedToArray(_ref9, 4),
+      t = _ref0[0],
+      n = _ref0[1],
+      s = _ref0[2],
+      c = _ref0[3];
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "row ".concat(t)
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "ln"
+    }, n), /*#__PURE__*/React.createElement("span", {
+      className: "sign"
+    }, s), /*#__PURE__*/React.createElement("span", null, c));
+  })), packOn && /*#__PURE__*/React.createElement("div", {
+    className: "rationale"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tag"
+  }, "why"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "OWASP A03 \u2014 Injection."), " Legacy handler accepted any string from ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "req.body.token"), ". A strict zod schema constrains length, type, and shape before the value reaches the DB layer. Returns ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "400"), " on malformed input rather than letting it propagate. ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "[pack skill: owasp-top-10 / input-validation]")))), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  apply this edit? "), /*#__PURE__*/React.createElement("span", {
+    className: "b"
+  }, "[Y/n/diff]"), " ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: 'var(--term-good)'
+    }
+  }, "y")), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "  \u2713 applied \xB7 checkpoint cp_4a91 created")), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "  step 3/6 \xB7 updating access-control check\u2026")));
+}
+
+// ---- Step 5: Approval gate -------------------------------------------------
+function StepGate(_ref1) {
+  var packOn = _ref1.packOn;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Tree, {
+    rows: [{
+      state: 'done',
+      text: 'Add zod validation on /refresh',
+      note: 'closes A03'
+    }, {
+      state: 'done',
+      text: 'Update access-control check (admin path)',
+      note: packOn ? 'pack-gated · approved' : null
+    }, {
+      state: 'done',
+      text: 'Backfilled 487 / 487 refresh tokens → auth_sessions'
+    }, {
+      state: 'done',
+      text: 'Snapshot saved: snap_84a2 · retained 30d'
+    }, {
+      state: packOn ? 'gate' : 'run',
+      text: 'DROP TABLE auth_tokens_v1',
+      tag: packOn ? 'awaiting approval' : 'running'
+    }]
+  }), packOn ? /*#__PURE__*/React.createElement("div", {
+    className: "approval"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "ico"
+  }, "!"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "ttl"
+  }, "approval required \xB7 destructive action"), /*#__PURE__*/React.createElement("div", {
+    className: "dim",
+    style: {
+      fontSize: 10.5,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5
+    }
+  }, "pack gate \xB7 DB schema change"))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--term-mute)'
+    }
+  }, "Claude wants to drop the legacy ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "auth_tokens_v1"), " table after migrating refresh-token records to ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "auth_sessions"), "."), /*#__PURE__*/React.createElement("div", {
+    className: "stmt"
+  }, "DROP TABLE IF EXISTS auth_tokens_v1;"), /*#__PURE__*/React.createElement("div", {
+    className: "preflight"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Why gated:"), " destructive DB operations cannot be reverted by checkpoint rollback. The pack requires explicit human-in-the-loop confirmation."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 6
+    }
+  }, /*#__PURE__*/React.createElement("b", null, "Pre-flight:"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "\u2713"), " 487/487 migrated \xA0", /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "\u2713"), " backup snap_84a2 \xA0", /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "\u2713"), " staging tests pass")), /*#__PURE__*/React.createElement("div", {
+    className: "ask"
+  }, "approve ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "DROP TABLE auth_tokens_v1"), "?", /*#__PURE__*/React.createElement("span", {
+    className: "choices"
+  }, "[y / N / details / hold]"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "cursor"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "options"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "approval-btn primary"
+  }, "y \xB7 approve & run"), /*#__PURE__*/React.createElement("button", {
+    className: "approval-btn"
+  }, "N \xB7 reject"), /*#__PURE__*/React.createElement("button", {
+    className: "approval-btn"
+  }, "details"), /*#__PURE__*/React.createElement("button", {
+    className: "approval-btn"
+  }, "hold for review")), /*#__PURE__*/React.createElement("div", {
+    className: "dim",
+    style: {
+      marginTop: 8,
+      fontSize: 10.5
+    }
+  }, "decision will be logged to session audit \xB7 cp_4a93 will not capture this op")) : /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "warn"
+  }, "  \u2717 DROP TABLE auth_tokens_v1 \xB7 executed without approval gate"), /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "\n  (no pack active \u2014 destructive ops run without confirmation prompt)")));
+}
+
+// ---- Step 6: PR ready -------------------------------------------------------
+function StepPR(_ref10) {
+  var packOn = _ref10.packOn;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PromptLine, {
+    input: "y"
+  }), /*#__PURE__*/React.createElement(Out, null, /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "  \u2713 approved \xB7 running migration")), /*#__PURE__*/React.createElement(Tree, {
+    rows: [{
+      state: 'done',
+      text: 'DROP TABLE auth_tokens_v1 · 0.84s'
+    }, {
+      state: 'done',
+      text: 'npm test · 142/142 passing · 6.2s'
+    }].concat(_toConsumableArray(packOn ? [{
+      state: 'done',
+      text: 'semgrep · 0 new findings'
+    }, {
+      state: 'done',
+      text: 'codeql · 0 new findings'
+    }, {
+      state: 'done',
+      text: 'secrets scan · 0 leaks in diff'
+    }] : []), [{
+      state: 'done',
+      text: 'Opened PR #412 → feat/auth-refresh-tokens'
+    }])
+  }), /*#__PURE__*/React.createElement(Box, {
+    title: "\u25CF PR #412 \xB7 feat(auth): refresh tokens via auth_sessions",
+    badge: /*#__PURE__*/React.createElement("span", {
+      className: "good"
+    }, "\u2713 all checks green")
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: 'var(--term-mute)',
+      fontSize: 12,
+      lineHeight: 1.7
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dim",
+    style: {
+      fontSize: 10.5,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5
+    }
+  }, "files"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 4
+    }
+  }, /*#__PURE__*/React.createElement("div", null, "\xB7 ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "src/auth/refresh.ts"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "+28 \u221218")), /*#__PURE__*/React.createElement("div", null, "\xB7 ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "src/auth/access.ts"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "+14 \u22129")), /*#__PURE__*/React.createElement("div", null, "\xB7 ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "db/migrations/2026_05_drop_auth_tokens_v1.sql"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "+6 \u22120")), /*#__PURE__*/React.createElement("div", null, "\xB7 ", /*#__PURE__*/React.createElement("span", {
+    className: "info"
+  }, "tests/auth.test.ts"), " ", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "+39 \u221235"))), packOn ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "accent-strong",
+    style: {
+      fontSize: 10.5,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5,
+      marginTop: 14
+    }
+  }, "pack-attached findings \xA0", /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "(auto-included in PR body)")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 4
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "\u2713"), " 0 new vulnerabilities (semgrep + codeql)"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "\u2713"), " 0 secrets in diff"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+    className: "warn"
+  }, "\u26A0"), " 1 destructive action gated \xB7 approved by maya@ \xB7 cp_4a93"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+    className: "good"
+  }, "\u2713"), " 3 OWASP categories addressed: A01, A03, A07")), /*#__PURE__*/React.createElement("div", {
+    className: "dim",
+    style: {
+      marginTop: 10,
+      fontSize: 11
+    }
+  }, "this rationale block is auto-prepended to your PR description so reviewers see what the pack covered.")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "dim",
+    style: {
+      fontSize: 10.5,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5,
+      marginTop: 14
+    }
+  }, "summary"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 4
+    }
+  }, /*#__PURE__*/React.createElement("div", null, "\xB7 refactored refresh-token flow to use auth_sessions"), /*#__PURE__*/React.createElement("div", null, "\xB7 migrated 487 records \xB7 dropped auth_tokens_v1"), /*#__PURE__*/React.createElement("div", null, "\xB7 tests passing"))))), /*#__PURE__*/React.createElement(PromptLine, {
+    input: "",
+    cursor: true
+  }));
+}
+
+// ============================================================================
+// MAIN APP
+// ============================================================================
+function App() {
+  var _useTweaks = useTweaks(TWEAK_DEFAULTS),
+    _useTweaks2 = _slicedToArray(_useTweaks, 2),
+    t = _useTweaks2[0],
+    setT = _useTweaks2[1];
+  var arm = t.arm;
+  var step = t.step;
+  var packOn = arm !== 'C' && step >= 3;
+  function jumpStep(n) {
+    setT('step', n);
+  }
+
+  // Render the cumulative terminal content depending on step
+  // (each step shows itself; earlier steps stay in scrollback for verisimilitude)
+  function renderStep() {
+    switch (step) {
+      case 1:
+        return /*#__PURE__*/React.createElement(StepDetect, {
+          arm: arm
+        });
+      case 2:
+        return /*#__PURE__*/React.createElement(StepInspect, {
+          arm: arm
+        });
+      case 3:
+        return /*#__PURE__*/React.createElement(StepPlan, {
+          packOn: packOn
+        });
+      case 4:
+        return /*#__PURE__*/React.createElement(StepExecute, {
+          packOn: packOn
+        });
+      case 5:
+        return /*#__PURE__*/React.createElement(StepGate, {
+          packOn: packOn
+        });
+      case 6:
+        return /*#__PURE__*/React.createElement(StepPR, {
+          packOn: packOn
+        });
+      default:
+        return null;
+    }
+  }
+
+  // Auto-scroll terminal to bottom on step change
+  useEffect(function () {
+    var term = document.querySelector('.term');
+    if (term) term.scrollTop = term.scrollHeight;
+  }, [step, arm]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "stage"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "stage-header"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "stage-title"
+  }, "Verified Security Pack \u2014 CLI Prototype"), /*#__PURE__*/React.createElement("div", {
+    className: "stage-sub"
+  }, "Terminal \xB7 Claude Code v1.42 \xB7 MGMT 275 Final")), /*#__PURE__*/React.createElement("div", {
+    className: "stage-meta"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Scenario"), ": refresh-token refactor before release"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Arm"), ":", /*#__PURE__*/React.createElement("span", {
+    className: "pill"
+  }, arm === 'C' ? 'Control' : arm === 'T1' ? 'T1 · auto-presented' : 'T2 · /packs only')), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Step"), ": ", step, "/6 \xB7 ", STEP_LABELS[step - 1]))), /*#__PURE__*/React.createElement("div", {
+    className: "window",
+    style: {
+      position: 'relative'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "titlebar"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "traffic"
+  }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)), /*#__PURE__*/React.createElement("div", {
+    className: "titlebar-title"
+  }, "claude \u2014 payments-api \u2014 zsh \u2014 132\xD742"), /*#__PURE__*/React.createElement("div", {
+    className: "titlebar-right"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "live-dot"
+  }), /*#__PURE__*/React.createElement("span", null, "live"))), /*#__PURE__*/React.createElement("div", {
+    className: "statusbar"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "group"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "seg"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "cwd"), " ", /*#__PURE__*/React.createElement("b", null, "~/payments-api")), /*#__PURE__*/React.createElement("span", {
+    className: "seg"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "git"), " ", /*#__PURE__*/React.createElement("b", null, "feat/auth-refresh-tokens")), /*#__PURE__*/React.createElement("span", {
+    className: "seg"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "model"), " ", /*#__PURE__*/React.createElement("b", null, "sonnet-4.6"))), /*#__PURE__*/React.createElement("div", {
+    className: "group"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "seg"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "dim"
+  }, "tokens"), " ", /*#__PURE__*/React.createElement("b", null, "4.2k / 200k")), /*#__PURE__*/React.createElement("span", {
+    className: "seg"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pack ".concat(packOn ? '' : 'off')
+  }, arm === 'C' ? 'no pack' : packOn ? '🛡 security' : 'pack available')))), /*#__PURE__*/React.createElement("div", {
+    className: "term"
+  }, renderStep()), t.showAnnotations && /*#__PURE__*/React.createElement(Annotations, {
+    arm: arm,
+    step: step
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "scenario-bar"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 14,
+      alignItems: 'center'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      textTransform: 'uppercase',
+      letterSpacing: 1.5,
+      color: 'var(--paper-ink-3)'
+    }
+  }, "Arm"), /*#__PURE__*/React.createElement("div", {
+    className: "arm-pills"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: arm === 'C' ? 'active' : '',
+    onClick: function onClick() {
+      return setT('arm', 'C');
+    }
+  }, "Control"), /*#__PURE__*/React.createElement("button", {
+    className: arm === 'T1' ? 'active' : '',
+    onClick: function onClick() {
+      return setT('arm', 'T1');
+    }
+  }, "T1 \xB7 auto"), /*#__PURE__*/React.createElement("button", {
+    className: arm === 'T2' ? 'active' : '',
+    onClick: function onClick() {
+      return setT('arm', 'T2');
+    }
+  }, "T2 \xB7 /packs"))), /*#__PURE__*/React.createElement("div", {
+    className: "step-stack"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "label"
+  }, "Step"), /*#__PURE__*/React.createElement("div", {
+    className: "step-dots"
+  }, STEP_LABELS.map(function (l, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "step-dot ".concat(step === i + 1 ? 'active' : step > i + 1 ? 'done' : ''),
+      title: l,
+      onClick: function onClick() {
+        return jumpStep(i + 1);
+      }
+    }, i + 1);
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      minWidth: 110,
+      fontSize: 10,
+      color: 'var(--paper-ink-3)',
+      textAlign: 'right'
+    }
+  }, STEP_LABELS[step - 1])), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn small",
+    onClick: function onClick() {
+      return jumpStep(Math.max(1, step - 1));
+    }
+  }, "\u2190 Prev"), /*#__PURE__*/React.createElement("button", {
+    className: "btn small primary",
+    onClick: function onClick() {
+      return jumpStep(Math.min(6, step + 1));
+    }
+  }, "Next \u2192"))), /*#__PURE__*/React.createElement("div", {
+    className: "legend"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "swatch term-bg"
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Terminal-native."), " Same scenario as the desktop wireframe, redesigned for CLI: prompts, slash-commands, inline approval, scrollback.")), /*#__PURE__*/React.createElement("div", {
+    className: "item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "swatch term-accent"
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Pack-active surface."), " Warm accent indicates the Verified Security Pack is shaping behavior \u2014 visible in statusbar, plan, and rationale callouts.")), /*#__PURE__*/React.createElement("div", {
+    className: "item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "swatch term-warn"
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Approval gate."), " Destructive actions become an inline [y/N] prompt \u2014 no modal needed; respects the keyboard-only flow.")), /*#__PURE__*/React.createElement("div", {
+    className: "item"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "swatch dash"
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Tweaks panel."), " Toggle arm (Control / T1 / T2) and step. T2 here means \"settings-buried\" \u2192 user must run ", /*#__PURE__*/React.createElement("span", {
+    className: "mono"
+  }, "/packs"), " to discover it."))), /*#__PURE__*/React.createElement("div", {
+    className: "stage-footer"
+  }, /*#__PURE__*/React.createElement("div", null, "Mazen Azar \xB7 Craig Bennett \xB7 MGMT 275 Product Delivery \xB7 Final Project"), /*#__PURE__*/React.createElement("div", null, "Claude Code CLI \xB7 Verified Security Pack \xB7 v0.3 wireframe")), /*#__PURE__*/React.createElement(TweaksPanel, {
+    title: "Tweaks \xB7 CLI Prototype"
+  }, /*#__PURE__*/React.createElement(TweakSection, {
+    title: "Experiment arm"
+  }, /*#__PURE__*/React.createElement(TweakRadio, {
+    value: t.arm,
+    onChange: function onChange(v) {
+      return setT('arm', v);
+    },
+    options: [{
+      value: 'C',
+      label: 'Control'
+    }, {
+      value: 'T1',
+      label: 'T1 · auto'
+    }, {
+      value: 'T2',
+      label: 'T2 · /packs'
+    }]
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: '#888',
+      marginTop: 6,
+      lineHeight: 1.4
+    }
+  }, "T1: detection banner prints on session start. T2: same Pack, only surfaced via ", /*#__PURE__*/React.createElement("code", null, "/packs"), ". C: no Pack.")), /*#__PURE__*/React.createElement(TweakSection, {
+    title: "Scenario step"
+  }, /*#__PURE__*/React.createElement(TweakSelect, {
+    value: String(t.step),
+    onChange: function onChange(v) {
+      return setT('step', parseInt(v, 10));
+    },
+    options: STEP_LABELS.map(function (l, i) {
+      return {
+        value: String(i + 1),
+        label: "".concat(i + 1, " \xB7 ").concat(l)
+      };
+    })
+  })), /*#__PURE__*/React.createElement(TweakSection, {
+    title: "Grader annotations"
+  }, /*#__PURE__*/React.createElement(TweakToggle, {
+    value: t.showAnnotations,
+    onChange: function onChange(v) {
+      return setT('showAnnotations', v);
+    },
+    label: "Hand-drawn margin notes"
+  }))));
+}
+
+// ============================================================================
+// Annotations — same idea as wireframe, retuned for CLI states
+// ============================================================================
+function Annotations(_ref11) {
+  var arm = _ref11.arm,
+    step = _ref11.step;
+  var notes = [];
+  if (step === 1 && arm === 'T1') {
+    notes.push({
+      top: 180,
+      left: -180,
+      w: 170,
+      text: "T1: detection prints at session start ↗  feature finds the user, not the reverse."
+    });
+    notes.push({
+      top: 280,
+      right: -190,
+      w: 180,
+      text: "↖ Single-key affordances [i / y / n] respect the CLI muscle memory."
+    });
+  }
+  if (step === 1 && arm === 'T2') {
+    notes.push({
+      top: 200,
+      left: -190,
+      w: 180,
+      text: "T2: only this tiny hint ↗ . Same pack, hidden behind discovery — isolates whether the surface itself drives lift."
+    });
+  }
+  if (step === 1 && arm === 'C') {
+    notes.push({
+      top: 200,
+      left: -180,
+      w: 170,
+      text: "Control: nothing. ↗ This is the average-user baseline the strategy doc calls out."
+    });
+  }
+  if (step === 2) {
+    notes.push({
+      top: 200,
+      left: -180,
+      w: 170,
+      text: "Disclaimer first. ↘  \"Verified ≠ guaranteed\" — Risk #1 from the PRFAQ."
+    });
+    notes.push({
+      top: 480,
+      right: -200,
+      w: 190,
+      text: "↖ Tools, gates, blocks ALL visible before enable. Trust through transparency, not branding."
+    });
+  }
+  if (step === 3) {
+    notes.push({
+      top: 200,
+      right: -200,
+      w: 190,
+      text: "↖ Plan declares expected gates up front. No surprise prompts mid-execution."
+    });
+    notes.push({
+      top: 420,
+      left: -180,
+      w: 170,
+      text: "Tool list narrows when pack is on ↘  — blast-radius mitigation visible to the user."
+    });
+  }
+  if (step === 4) {
+    notes.push({
+      top: 360,
+      right: -200,
+      w: 190,
+      text: "Per-edit rationale ↖  maps directly to the eval metric \"correctness with explanation\" from §1.2."
+    });
+  }
+  if (step === 5) {
+    notes.push({
+      top: 280,
+      left: -190,
+      w: 180,
+      text: "Inline [y/N] gate ↗ — modal would break terminal flow. Pre-flight evidence shown to inform the decision."
+    });
+  }
+  if (step === 6) {
+    notes.push({
+      top: 380,
+      right: -200,
+      w: 190,
+      text: "↖ Pack findings auto-attach to PR body — shareable artifact drives team-wide standardization (KR3)."
+    });
+  }
+  return /*#__PURE__*/React.createElement(React.Fragment, null, notes.map(function (n, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      className: "annotation",
+      style: {
+        top: n.top,
+        left: n.left,
+        right: n.right,
+        width: n.w,
+        transform: "rotate(".concat((i % 2 === 0 ? -1 : 1) * 1.2, "deg)")
+      }
+    }, n.text);
+  }));
+}
+if (false && document.getElementById('root')) {
+  ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(App, null));
+}
+});</script></head>
+<body>
+
+
+
+<div id="root"><div class="stage"><div class="stage-header"><div><div class="stage-title">Verified Security Pack — CLI Prototype</div><div class="stage-sub">Terminal · Claude Code v1.42 · MGMT 275 Final</div></div><div class="stage-meta"><div><b>Scenario</b>: refresh-token refactor before release</div><div><b>Arm</b>:<span class="pill">T1 · auto-presented</span></div><div><b>Step</b>: 1/6 · Detect</div></div></div><div class="window" style="position: relative;"><div class="titlebar"><div class="traffic"><span></span><span></span><span></span></div><div class="titlebar-title">claude — payments-api — zsh — 132×42</div><div class="titlebar-right"><span class="live-dot"></span><span>live</span></div></div><div class="statusbar"><div class="group"><span class="seg"><span class="dim">cwd</span> <b>~/payments-api</b></span><span class="seg"><span class="dim">git</span> <b>feat/auth-refresh-tokens</b></span><span class="seg"><span class="dim">model</span> <b>sonnet-4.6</b></span></div><div class="group"><span class="seg"><span class="dim">tokens</span> <b>4.2k / 200k</b></span><span class="seg"><span class="pack off">pack available</span></span></div></div><div class="term"><div class="out" style="padding-left: 0px;"><span class="dim"># booting claude code v1.42.0 · payments-api</span></div><div class="out" style="padding-left: 0px;"><span class="dim">  reading CLAUDE.md (2.4 KB) · loading skills · connecting MCP (3 servers)</span></div><div class="box accent"><div class="box-head"><span>🛡 security-sensitive project detected <span style="opacity: 0.7; margin-left: 8px;"><span class="accent">verified pack</span></span></span></div><div class="box-body"><div style="margin-bottom: 8px;"><span class="mute">Signals:</span> <span class="info">auth/refresh.ts</span>, <span class="info">.env.production</span>, <span class="info">jsonwebtoken@9.0</span>, <span class="info">bcrypt@5.1</span></div><div style="margin-bottom: 10px;">Anthropic ships a curated <span class="accent-strong">Verified Security Pack</span> tuned for this kind of repo: OWASP-aware skills, scoped tool permissions, and approval gates on destructive actions.</div><div class="mute" style="font-size: 11.5px;"><span class="b" style="color: var(--term-text);">What now?</span> press <span class="kbd">i</span> to inspect · <span class="kbd">y</span> to enable · <span class="kbd">n</span> not now · <span class="kbd">/security-pack</span> anytime</div></div></div><div class="prompt-line"><span class="arrow">❯</span><span class="cwd">~/payments-api</span><span class="dim">git:(feat/auth-refresh-tokens)</span><span class="input">Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday.<span class="cursor"></span></span></div></div><div class="annotation" style="top: 180px; left: -180px; width: 170px; transform: rotate(-1.2deg);">T1: detection prints at session start ↗  feature finds the user, not the reverse.</div><div class="annotation" style="top: 280px; right: -190px; width: 180px; transform: rotate(1.2deg);">↖ Single-key affordances [i / y / n] respect the CLI muscle memory.</div></div><div class="scenario-bar"><div style="display: flex; gap: 14px; align-items: center;"><span style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--paper-ink-3);">Arm</span><div class="arm-pills"><button class="">Control</button><button class="active">T1 · auto</button><button class="">T2 · /packs</button></div></div><div class="step-stack"><span class="label">Step</span><div class="step-dots"><div class="step-dot active" title="Detect">1</div><div class="step-dot " title="Inspect Pack">2</div><div class="step-dot " title="Plan Mode">3</div><div class="step-dot " title="Execute">4</div><div class="step-dot " title="Approval Gate">5</div><div class="step-dot " title="PR Ready">6</div></div><span style="min-width: 110px; font-size: 10px; color: var(--paper-ink-3); text-align: right;">Detect</span></div><div style="display: flex; gap: 8px;"><button class="btn small">← Prev</button><button class="btn small primary">Next →</button></div></div><div class="legend"><div class="item"><div class="swatch term-bg"></div><div><b>Terminal-native.</b> Same scenario as the desktop wireframe, redesigned for CLI: prompts, slash-commands, inline approval, scrollback.</div></div><div class="item"><div class="swatch term-accent"></div><div><b>Pack-active surface.</b> Warm accent indicates the Verified Security Pack is shaping behavior — visible in statusbar, plan, and rationale callouts.</div></div><div class="item"><div class="swatch term-warn"></div><div><b>Approval gate.</b> Destructive actions become an inline [y/N] prompt — no modal needed; respects the keyboard-only flow.</div></div><div class="item"><div class="swatch dash"></div><div><b>Tweaks panel.</b> Toggle arm (Control / T1 / T2) and step. T2 here means "settings-buried" → user must run <span class="mono">/packs</span> to discover it.</div></div></div><div class="stage-footer"><div>Mazen Azar · Craig Bennett · MGMT 275 Product Delivery · Final Project</div><div>Claude Code CLI · Verified Security Pack · v0.3 wireframe</div></div></div></div>
+
+<script src="babel.min.js"></script>
+<script type="text/babel">
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakColor  label="Palette" value={t.palette}
+//                        options={[['#D97757', '#29261b', '#f6f4ef'],
+//                                  ['#475569', '#0f172a', '#f1f5f9']]}
+//                        onChange={(v) => setTweak('palette', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+
+  .twk-chips{display:flex;gap:6px}
+  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;
+    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);
+    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}
+  .twk-chip:hover{transform:translateY(-1px);
+    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}
+  .twk-chip[data-on="1"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),
+    0 2px 6px rgba(0,0,0,.15)}
+  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;
+    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i:first-child{box-shadow:none}
+  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
+    // can react — the parent message only reaches the host, not peers.
+    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', noDeckControls = false, children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  // Auto-inject a rail toggle when a <deck-stage> is on the page. The
+  // toggle drives the deck's per-viewer _railVisible via window message;
+  // state is mirrored from the same localStorage key the deck reads so
+  // the control reflects reality across reloads. The mechanism is the
+  // message — authors who want custom placement can post it directly
+  // and pass noDeckControls to suppress this one.
+  const hasDeckStage = React.useMemo(
+    () => typeof document !== 'undefined' && !!document.querySelector('deck-stage'),
+    [],
+  );
+  const [railVisible, setRailVisible] = React.useState(() => {
+    try { return localStorage.getItem('deck-stage.railVisible') !== '0'; } catch (e) { return true; }
+  });
+  const toggleRail = (on) => {
+    setRailVisible(on);
+    window.postMessage({ type: '__deck_rail_visible', on }, '*');
+  };
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" data-noncommentable=""
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">
+          {hasDeckStage && !noDeckControls && (
+            <TweakSection label="Deck">
+              <TweakToggle label="Thumbnail rail" value={railVisible} onChange={toggleRail} />
+            </TweakSection>
+          )}
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  // Segments wrap mid-word once per-segment width runs out. The track is
+  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
+  // back to a dropdown rather than wrap.
+  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
+  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+  if (!fitsAsSegments) {
+    // <select> emits strings — map back to the original option value so the
+    // fallback stays type-preserving (numbers, booleans) like the segment path.
+    const resolve = (s) => {
+      const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
+      return m === undefined ? s : typeof m === 'object' ? m.value : m;
+    };
+    return <TweakSelect label={label} value={value} options={options}
+                        onChange={(s) => onChange(resolve(s))} />;
+  }
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// read on both #111 and #fafafa without per-option configuration. Hex input
+// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
+function __twkIsLight(hex) {
+  const h = String(hex).replace('#', '');
+  const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+  const n = parseInt(x.slice(0, 6), 16);
+  if (Number.isNaN(n)) return true;
+  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  return r * 299 + g * 587 + b * 114 > 148000;
+}
+
+const __TwkCheck = ({ light }) => (
+  <svg viewBox="0 0 14 14" aria-hidden="true">
+    <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
+          strokeLinecap="round" strokeLinejoin="round"
+          stroke={light ? 'rgba(0,0,0,.78)' : '#fff'} />
+  </svg>
+);
+
+// TweakColor — curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
+// rest stacked in a sharp column on the right. onChange emits the
+// option in the shape it was passed (string stays string, array stays array).
+// Without options it falls back to the native color input for back-compat.
+function TweakColor({ label, value, options, onChange }) {
+  if (!options || !options.length) {
+    return (
+      <div className="twk-row twk-row-h">
+        <div className="twk-lbl"><span>{label}</span></div>
+        <input type="color" className="twk-swatch" value={value}
+               onChange={(e) => onChange(e.target.value)} />
+      </div>
+    );
+  }
+  // Native <input type=color> emits lowercase hex per the HTML spec, so
+  // compare case-insensitively. String() guards JSON.stringify(undefined),
+  // which returns the primitive undefined (no .toLowerCase).
+  const key = (o) => String(JSON.stringify(o)).toLowerCase();
+  const cur = key(value);
+  return (
+    <TweakRow label={label}>
+      <div className="twk-chips" role="radiogroup">
+        {options.map((o, i) => {
+          const colors = Array.isArray(o) ? o : [o];
+          const [hero, ...rest] = colors;
+          const sup = rest.slice(0, 4);
+          const on = key(o) === cur;
+          return (
+            <button key={i} type="button" className="twk-chip" role="radio"
+                    aria-checked={on} data-on={on ? '1' : '0'}
+                    aria-label={colors.join(', ')} title={colors.join(' · ')}
+                    style={{ background: hero }}
+                    onClick={() => onChange(o)}>
+              {sup.length > 0 && (
+                <span>
+                  {sup.map((c, j) => <i key={j} style={{ background: c }} />)}
+                </span>
+              )}
+              {on && <__TwkCheck light={__twkIsLight(hero)} />}
+            </button>
+          );
+        })}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+</script>
+<script type="text/babel">/* global React, ReactDOM, TweaksPanel, useTweaks, TweakSection, TweakRadio, TweakToggle, TweakSelect */
+const { useState, useEffect, useMemo } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "arm": "T1",
+  "step": 1,
+  "showAnnotations": true
+}/*EDITMODE-END*/;
+
+const STEP_LABELS = [
+  "Detect", "Inspect Pack", "Plan Mode", "Execute", "Approval Gate", "PR Ready"
+];
+
+// ============================================================================
+// PRIMITIVES
+// ============================================================================
+function PromptLine({ cwd = "~/payments-api", branch = "feat/auth-refresh-tokens", input, cursor }) {
+  return (
+    <div className="prompt-line">
+      <span className="arrow">❯</span>
+      <span className="cwd">{cwd}</span>
+      <span className="dim">git:({branch})</span>
+      <span className="input">{input}{cursor && <span className="cursor" />}</span>
+    </div>
+  );
+}
+
+function Out({ children, indent = 0 }) {
+  return <div className="out" style={{paddingLeft: indent * 8}}>{children}</div>;
+}
+
+function Tree({ rows }) {
+  return (
+    <div className="tree">
+      {rows.map((r, i) => (
+        <div key={i} className="ln" style={{paddingLeft: (r.indent || 0) * 14}}>
+          <span className={`glyph ${r.state || ''}`}>{r.glyph || (r.state === 'done' ? '✓' : r.state === 'run' ? '◐' : r.state === 'gate' ? '⚠' : '○')}</span>
+          <span className={r.state === 'done' ? 'dim' : r.state === 'run' ? 'accent-strong' : r.state === 'gate' ? 'warn' : ''}>
+            {r.text}
+            {r.note && <span className="dim" style={{marginLeft:8}}>· {r.note}</span>}
+            {r.tag && <span className="dim" style={{marginLeft:8, fontSize:11}}>[{r.tag}]</span>}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Box({ title, badge, headerRight, accent, warn, children }) {
+  const cls = accent ? 'box accent' : warn ? 'box warn' : 'box';
+  return (
+    <div className={cls}>
+      {title && (
+        <div className="box-head">
+          <span>{title} {badge && <span style={{opacity:.7, marginLeft:8}}>{badge}</span>}</span>
+          {headerRight}
+        </div>
+      )}
+      <div className="box-body">{children}</div>
+    </div>
+  );
+}
+
+// ============================================================================
+// STEP CONTENT
+// ============================================================================
+
+// ---- Step 1: Detection -----------------------------------------------------
+function StepDetect({ arm }) {
+  return (
+    <>
+      <Out><span className="dim"># booting claude code v1.42.0 · payments-api</span></Out>
+      <Out><span className="dim">  reading CLAUDE.md (2.4 KB) · loading skills · connecting MCP (3 servers)</span></Out>
+
+      {arm === 'T1' && (
+        <Box title="🛡 security-sensitive project detected" badge={<span className="accent">verified pack</span>} accent>
+          <div style={{marginBottom: 8}}>
+            <span className="mute">Signals:</span> <span className="info">auth/refresh.ts</span>, <span className="info">.env.production</span>, <span className="info">jsonwebtoken@9.0</span>, <span className="info">bcrypt@5.1</span>
+          </div>
+          <div style={{marginBottom: 10}}>
+            Anthropic ships a curated <span className="accent-strong">Verified Security Pack</span> tuned for this kind of repo: OWASP-aware skills, scoped tool permissions, and approval gates on destructive actions.
+          </div>
+          <div className="mute" style={{fontSize: 11.5}}>
+            <span className="b" style={{color:'var(--term-text)'}}>What now?</span> press <span className="kbd">i</span> to inspect · <span className="kbd">y</span> to enable · <span className="kbd">n</span> not now · <span className="kbd">/security-pack</span> anytime
+          </div>
+        </Box>
+      )}
+
+      {arm === 'T2' && (
+        <Out>
+          <span className="dim">  domain packs available — run </span><span className="info">/packs</span><span className="dim"> to view</span>
+        </Out>
+      )}
+
+      {arm === 'C' && (
+        <Out>
+          <span className="dim">  no domain configuration applied · using base settings</span>
+        </Out>
+      )}
+
+      <PromptLine input={
+        arm === 'T1' ? "Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday." :
+        arm === 'T2' ? "Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday." :
+                       "Refactor our refresh-token flow in src/auth/refresh.ts. Replace auth_tokens_v1 with the new auth_sessions store. Ship before Friday."
+      } cursor />
+    </>
+  );
+}
+
+// ---- Step 2: Inspect pack --------------------------------------------------
+function StepInspect({ arm }) {
+  // For T2, show the /packs list first (since they had to discover it),
+  // then drill into security. For T1, drill in directly.
+  return (
+    <>
+      {arm === 'T2' && (
+        <>
+          <PromptLine input="/packs" />
+          <Out>
+{`  AVAILABLE   DOMAIN PACKS                             STATUS
+  ────────────────────────────────────────────────────────────
+  ▸ security  OWASP, auth, secrets, dep scan, gates    available
+    web-dev   React/Next, accessibility, perf          available
+    data-sci  notebook safety, PII, reproducibility    available
+    devops    IaC review, CI hardening                 coming
+    mobile    iOS/Android, ATS, keychain               coming
+    api       OpenAPI, auth flows, rate limits         coming
+
+  run `}<span className="info">/packs inspect security</span><span className="dim"> to view details</span>
+          </Out>
+          <PromptLine input="/packs inspect security" />
+        </>
+      )}
+
+      {arm !== 'T2' && <PromptLine input="/security-pack" />}
+
+      <Box
+        title="🛡 verified security pack · v1.0"
+        badge={<span className="dim">curated by anthropic · last reviewed apr 2026</span>}
+        accent
+      >
+        <div style={{
+          padding: '8px 10px', marginBottom: 12,
+          border: '1px dashed var(--term-warn-2)',
+          background: 'rgba(232,122,90,.06)',
+          borderRadius: 4,
+          fontSize: 11.5, color: 'var(--term-mute)'
+        }}>
+          <span className="warn b">! not a security guarantee.</span> this pack improves security-aware development. it does not certify your codebase. you remain responsible for code review, security review, and any required audits.
+        </div>
+
+        <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap: 18}}>
+          <div>
+            <div className="accent-strong" style={{fontSize:11, textTransform:'uppercase', letterSpacing:1.5, marginBottom:6}}>
+              vulnerability checks <span className="dim">(8)</span>
+            </div>
+            <Tree rows={[
+              {glyph:'•', text:'OWASP Top 10 (2025) coverage'},
+              {glyph:'•', text:'Input validation on untrusted boundaries'},
+              {glyph:'•', text:'Auth & access-control review'},
+              {glyph:'•', text:'Secrets & PII handling'},
+              {glyph:'•', text:'Dependency vulnerability scan'},
+              {glyph:'•', text:'Indirect prompt-injection detector'},
+              {glyph:'•', text:'Dangerous-pattern interrupt', note:'eval, disabled TLS, hardcoded keys'},
+              {glyph:'•', text:'Crypto primitive review'},
+            ]} />
+
+            <div className="accent-strong" style={{fontSize:11, textTransform:'uppercase', letterSpacing:1.5, margin:'14px 0 6px'}}>
+              allowed tools <span className="dim">(6, scoped)</span>
+            </div>
+            <Tree rows={[
+              {glyph:'→', text:'Read', note:'excludes .env*, secret globs'},
+              {glyph:'→', text:'Edit', note:'diff preview required', tag:'gated'},
+              {glyph:'→', text:'Bash · whitelisted', note:'npm test, pytest, semgrep, codeql'},
+              {glyph:'→', text:'DB read'},
+              {glyph:'→', text:'DB write', tag:'gated'},
+              {glyph:'→', text:'Git', note:'no force-push'},
+            ]} />
+          </div>
+          <div>
+            <div className="warn b" style={{fontSize:11, textTransform:'uppercase', letterSpacing:1.5, marginBottom:6}}>
+              approval gates <span className="dim">(3)</span>
+            </div>
+            <Tree rows={[
+              {glyph:'⚠', state:'gate', text:'Destructive DB ops', note:'DROP, TRUNCATE, schema'},
+              {glyph:'⚠', state:'gate', text:'Modifying access-control logic', note:'role checks, perm grants'},
+              {glyph:'⚠', state:'gate', text:'Disabling security middleware', note:'CSRF, CORS, rate limit, TLS'},
+            ]} />
+
+            <div className="warn b" style={{fontSize:11, textTransform:'uppercase', letterSpacing:1.5, margin:'14px 0 6px'}}>
+              blocked by default <span className="dim">(4)</span>
+            </div>
+            <Tree rows={[
+              {glyph:'✕', state:'gate', text:'Push to remote without confirm'},
+              {glyph:'✕', state:'gate', text:'eval/exec of untrusted input'},
+              {glyph:'✕', state:'gate', text:'Disabling TLS verification'},
+              {glyph:'✕', state:'gate', text:'Writing to .env.* files'},
+            ]} />
+
+            <div className="dim" style={{fontSize:11, marginTop:14}}>
+              override anytime via <span className="info mono">/pack override</span> · all overrides logged · checkpoint rollback enabled per edit.
+            </div>
+          </div>
+        </div>
+      </Box>
+
+      <Out><span className="dim">  enable this pack for the current session? </span><span className="b">[Y/n]</span> <span className="cursor" /></Out>
+    </>
+  );
+}
+
+// ---- Step 3: Plan Mode -----------------------------------------------------
+function StepPlan({ packOn }) {
+  return (
+    <>
+      <PromptLine input={packOn ? "y" : "/plan"} />
+      {packOn && (
+        <Out>
+          <span className="good">  ✓ security pack enabled</span> <span className="dim">· loaded 8 skills · scoped 6 tools · armed 3 gates · 4 blocks</span>
+        </Out>
+      )}
+      <Out><span className="dim">  entering plan mode…</span></Out>
+
+      <Box
+        title={packOn ? "▸ plan · security-aware" : "▸ plan"}
+        badge={packOn && <span className="accent">🛡 pack active</span>}
+        accent={packOn}
+      >
+        <div style={{marginBottom:10}}>
+          <span className="b" style={{color:'var(--term-text)'}}>Goal.</span> <span className="mute">Refactor refresh-token flow in <span className="info">src/auth/refresh.ts</span> to use the new <span className="info">auth_sessions</span> store. Drop legacy <span className="info">auth_tokens_v1</span> after backfill.</span>
+        </div>
+
+        {packOn && (
+          <div style={{marginBottom:10, color:'var(--term-mute)', fontSize:11.5}}>
+            <span className="accent-strong">Security context loaded:</span> OWASP A01 (access control), A03 (injection), A07 (auth failures). Crypto primitives in <span className="info">jsonwebtoken@9.0</span> reviewed. Dependency advisory DB scanned (clean).
+          </div>
+        )}
+
+        <Tree rows={[
+          {state:'done', text:'Read src/auth/refresh.ts + auth_sessions schema'},
+          ...(packOn ? [{state:'done', text:'Cross-reference OWASP A01 / A03 / A07', note:'pack skill'}] : []),
+          {state:'pending', text:packOn ? 'Add zod input validation on /refresh' : 'Add input validation on /refresh', note: packOn ? 'closes A03' : null},
+          {state:'pending', text:packOn ? 'Update access-control check (admin path)' : 'Update access-control check', tag: packOn ? 'GATE' : null},
+          {state:'pending', text:'Backfill refresh tokens → auth_sessions', note:'487 records · snapshot first'},
+          {state:'pending', text:'DROP TABLE auth_tokens_v1', tag: packOn ? 'GATE · approval required' : null},
+          {state:'pending', text:packOn ? 'Run npm test + semgrep + codeql' : 'Run npm test'},
+          {state:'pending', text:'Open PR #412'},
+        ]} />
+
+        <div style={{marginTop:14, fontSize:11.5, color:'var(--term-mute)'}}>
+          <span className="b" style={{color:'var(--term-text)'}}>Tools needed:</span>{' '}
+          {(packOn
+            ? ['Read', 'Edit (gated)', 'npm test', 'semgrep', 'codeql', 'DB read', 'DB write (gated)']
+            : ['Read', 'Edit', 'Bash', 'DB read', 'DB write']
+          ).map((t, i, a) => (
+            <span key={t}>
+              <span className={packOn ? 'accent' : 'info'}>{t}</span>{i < a.length - 1 ? <span className="dim">, </span> : null}
+            </span>
+          ))}
+        </div>
+
+        {packOn && (
+          <div style={{marginTop:6, fontSize:11.5, color:'var(--term-mute)'}}>
+            <span className="b" style={{color:'var(--term-text)'}}>Expected gates:</span> <span className="warn">1 destructive (DROP)</span><span className="dim">, </span><span className="warn">1 access-control change</span>
+          </div>
+        )}
+      </Box>
+
+      <Out><span className="dim">  proceed with plan? </span><span className="b">[Y/n/edit]</span> <span className="cursor" /></Out>
+    </>
+  );
+}
+
+// ---- Step 4: Execute -------------------------------------------------------
+function StepExecute({ packOn }) {
+  return (
+    <>
+      <PromptLine input="y" />
+      <Out><span className="dim">  executing plan · step 2/6 · adding input validation</span></Out>
+
+      <Tree rows={[
+        {state:'done', text:'Read src/auth/refresh.ts (84 lines)'},
+        {state:'done', text:'Read db/migrations/auth_sessions.sql (41 lines)'},
+        ...(packOn ? [{state:'done', text:'Pre-scan: semgrep · 0 new findings', note:'pack tool'}] : []),
+        {state:'run', text:'Writing diff: zod schema for refresh body'},
+      ]} />
+
+      <Box
+        title="● edit · src/auth/refresh.ts"
+        badge={<span className="dim">+12 −2 · proposed</span>}
+      >
+        <div className="diff">
+          {[
+            ['ctx', 1, ' ', 'import { db } from "../db";'],
+            ['add', 2, '+', 'import { z } from "zod";'],
+            ['ctx', 3, ' ', ''],
+            ['add', 4, '+', 'const RefreshBody = z.object({'],
+            ['add', 5, '+', '  token: z.string().min(32).max(512),'],
+            ['add', 6, '+', '  device_id: z.string().uuid().optional(),'],
+            ['add', 7, '+', '});'],
+            ['ctx', 8, ' ', ''],
+            ['ctx', 9, ' ', 'export async function refresh(req, res) {'],
+            ['del', 10, '-', '  const { token } = req.body;'],
+            ['add', 10, '+', '  const parsed = RefreshBody.safeParse(req.body);'],
+            ['add', 11, '+', '  if (!parsed.success) return res.status(400).json({error:"bad_request"});'],
+            ['add', 12, '+', '  const { token } = parsed.data;'],
+            ['ctx', 13, ' ', '']
+          ].map(([t,n,s,c],i) => (
+            <div key={i} className={`row ${t}`}>
+              <span className="ln">{n}</span>
+              <span className="sign">{s}</span>
+              <span>{c}</span>
+            </div>
+          ))}
+        </div>
+        {packOn && (
+          <div className="rationale">
+            <span className="tag">why</span>
+            <div>
+              <b>OWASP A03 — Injection.</b> Legacy handler accepted any string from <span className="info">req.body.token</span>. A strict zod schema constrains length, type, and shape before the value reaches the DB layer. Returns <span className="info">400</span> on malformed input rather than letting it propagate. <span className="dim">[pack skill: owasp-top-10 / input-validation]</span>
+            </div>
+          </div>
+        )}
+      </Box>
+
+      <Out><span className="dim">  apply this edit? </span><span className="b">[Y/n/diff]</span> <span style={{color:'var(--term-good)'}}>y</span></Out>
+      <Out><span className="good">  ✓ applied · checkpoint cp_4a91 created</span></Out>
+      <Out><span className="dim">  step 3/6 · updating access-control check…</span></Out>
+    </>
+  );
+}
+
+// ---- Step 5: Approval gate -------------------------------------------------
+function StepGate({ packOn }) {
+  return (
+    <>
+      <Tree rows={[
+        {state:'done', text:'Add zod validation on /refresh', note:'closes A03'},
+        {state:'done', text:'Update access-control check (admin path)', note:packOn ? 'pack-gated · approved' : null},
+        {state:'done', text:'Backfilled 487 / 487 refresh tokens → auth_sessions'},
+        {state:'done', text:'Snapshot saved: snap_84a2 · retained 30d'},
+        {state: packOn ? 'gate' : 'run', text:'DROP TABLE auth_tokens_v1', tag: packOn ? 'awaiting approval' : 'running'},
+      ]} />
+
+      {packOn ? (
+        <div className="approval">
+          <div className="head">
+            <span className="ico">!</span>
+            <div>
+              <div className="ttl">approval required · destructive action</div>
+              <div className="dim" style={{fontSize:10.5, textTransform:'uppercase', letterSpacing:1.5}}>pack gate · DB schema change</div>
+            </div>
+          </div>
+          <div style={{color:'var(--term-mute)'}}>
+            Claude wants to drop the legacy <span className="info">auth_tokens_v1</span> table after migrating refresh-token records to <span className="info">auth_sessions</span>.
+          </div>
+          <div className="stmt">DROP TABLE IF EXISTS auth_tokens_v1;</div>
+          <div className="preflight">
+            <div><b>Why gated:</b> destructive DB operations cannot be reverted by checkpoint rollback. The pack requires explicit human-in-the-loop confirmation.</div>
+            <div style={{marginTop:6}}>
+              <b>Pre-flight:</b> <span className="good">✓</span> 487/487 migrated &nbsp;
+              <span className="good">✓</span> backup snap_84a2 &nbsp;
+              <span className="good">✓</span> staging tests pass
+            </div>
+          </div>
+          <div className="ask">
+            approve <span className="info">DROP TABLE auth_tokens_v1</span>?
+            <span className="choices">[y / N / details / hold]</span> <span className="cursor" />
+          </div>
+          <div className="options">
+            <button className="approval-btn primary">y · approve & run</button>
+            <button className="approval-btn">N · reject</button>
+            <button className="approval-btn">details</button>
+            <button className="approval-btn">hold for review</button>
+          </div>
+          <div className="dim" style={{marginTop:8, fontSize:10.5}}>
+            decision will be logged to session audit · cp_4a93 will not capture this op
+          </div>
+        </div>
+      ) : (
+        <Out>
+          <span className="warn">  ✗ DROP TABLE auth_tokens_v1 · executed without approval gate</span>
+          <span className="dim">{`\n  (no pack active — destructive ops run without confirmation prompt)`}</span>
+        </Out>
+      )}
+    </>
+  );
+}
+
+// ---- Step 6: PR ready -------------------------------------------------------
+function StepPR({ packOn }) {
+  return (
+    <>
+      <PromptLine input="y" />
+      <Out><span className="good">  ✓ approved · running migration</span></Out>
+      <Tree rows={[
+        {state:'done', text:'DROP TABLE auth_tokens_v1 · 0.84s'},
+        {state:'done', text:'npm test · 142/142 passing · 6.2s'},
+        ...(packOn ? [
+          {state:'done', text:'semgrep · 0 new findings'},
+          {state:'done', text:'codeql · 0 new findings'},
+          {state:'done', text:'secrets scan · 0 leaks in diff'},
+        ] : []),
+        {state:'done', text:'Opened PR #412 → feat/auth-refresh-tokens'},
+      ]} />
+
+      <Box title="● PR #412 · feat(auth): refresh tokens via auth_sessions" badge={<span className="good">✓ all checks green</span>}>
+        <div style={{color:'var(--term-mute)', fontSize:12, lineHeight:1.7}}>
+          <span className="dim" style={{fontSize:10.5, textTransform:'uppercase', letterSpacing:1.5}}>files</span>
+          <div style={{marginTop:4}}>
+            <div>· <span className="info">src/auth/refresh.ts</span> <span className="dim">+28 −18</span></div>
+            <div>· <span className="info">src/auth/access.ts</span> <span className="dim">+14 −9</span></div>
+            <div>· <span className="info">db/migrations/2026_05_drop_auth_tokens_v1.sql</span> <span className="dim">+6 −0</span></div>
+            <div>· <span className="info">tests/auth.test.ts</span> <span className="dim">+39 −35</span></div>
+          </div>
+
+          {packOn ? (
+            <>
+              <div className="accent-strong" style={{fontSize:10.5, textTransform:'uppercase', letterSpacing:1.5, marginTop:14}}>
+                pack-attached findings &nbsp;<span className="dim">(auto-included in PR body)</span>
+              </div>
+              <div style={{marginTop:4}}>
+                <div><span className="good">✓</span> 0 new vulnerabilities (semgrep + codeql)</div>
+                <div><span className="good">✓</span> 0 secrets in diff</div>
+                <div><span className="warn">⚠</span> 1 destructive action gated · approved by maya@ · cp_4a93</div>
+                <div><span className="good">✓</span> 3 OWASP categories addressed: A01, A03, A07</div>
+              </div>
+              <div className="dim" style={{marginTop:10, fontSize:11}}>
+                this rationale block is auto-prepended to your PR description so reviewers see what the pack covered.
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="dim" style={{fontSize:10.5, textTransform:'uppercase', letterSpacing:1.5, marginTop:14}}>
+                summary
+              </div>
+              <div style={{marginTop:4}}>
+                <div>· refactored refresh-token flow to use auth_sessions</div>
+                <div>· migrated 487 records · dropped auth_tokens_v1</div>
+                <div>· tests passing</div>
+              </div>
+            </>
+          )}
+        </div>
+      </Box>
+
+      <PromptLine input="" cursor />
+    </>
+  );
+}
+
+// ============================================================================
+// MAIN APP
+// ============================================================================
+function App() {
+  const [t, setT] = useTweaks(TWEAK_DEFAULTS);
+  const arm = t.arm;
+  const step = t.step;
+
+  const packOn = arm !== 'C' && step >= 3;
+
+  function jumpStep(n) { setT('step', n); }
+
+  // Render the cumulative terminal content depending on step
+  // (each step shows itself; earlier steps stay in scrollback for verisimilitude)
+  function renderStep() {
+    switch (step) {
+      case 1: return <StepDetect arm={arm} />;
+      case 2: return <StepInspect arm={arm} />;
+      case 3: return <StepPlan packOn={packOn} />;
+      case 4: return <StepExecute packOn={packOn} />;
+      case 5: return <StepGate packOn={packOn} />;
+      case 6: return <StepPR packOn={packOn} />;
+      default: return null;
+    }
+  }
+
+  // Auto-scroll terminal to bottom on step change
+  useEffect(() => {
+    const term = document.querySelector('.term');
+    if (term) term.scrollTop = term.scrollHeight;
+  }, [step, arm]);
+
+  return (
+    <div className="stage">
+      <div className="stage-header">
+        <div>
+          <div className="stage-title">Verified Security Pack — CLI Prototype</div>
+          <div className="stage-sub">Terminal · Claude Code v1.42 · MGMT 275 Final</div>
+        </div>
+        <div className="stage-meta">
+          <div><b>Scenario</b>: refresh-token refactor before release</div>
+          <div>
+            <b>Arm</b>:
+            <span className="pill">{arm === 'C' ? 'Control' : arm === 'T1' ? 'T1 · auto-presented' : 'T2 · /packs only'}</span>
+          </div>
+          <div><b>Step</b>: {step}/6 · {STEP_LABELS[step-1]}</div>
+        </div>
+      </div>
+
+      <div className="window" style={{position:'relative'}}>
+        <div className="titlebar">
+          <div className="traffic"><span /><span /><span /></div>
+          <div className="titlebar-title">claude — payments-api — zsh — 132×42</div>
+          <div className="titlebar-right">
+            <span className="live-dot" /><span>live</span>
+          </div>
+        </div>
+
+        <div className="statusbar">
+          <div className="group">
+            <span className="seg"><span className="dim">cwd</span> <b>~/payments-api</b></span>
+            <span className="seg"><span className="dim">git</span> <b>feat/auth-refresh-tokens</b></span>
+            <span className="seg"><span className="dim">model</span> <b>sonnet-4.6</b></span>
+          </div>
+          <div className="group">
+            <span className="seg"><span className="dim">tokens</span> <b>4.2k / 200k</b></span>
+            <span className="seg"><span className={`pack ${packOn ? '' : 'off'}`}>
+              {arm === 'C' ? 'no pack' : packOn ? '🛡 security' : 'pack available'}
+            </span></span>
+          </div>
+        </div>
+
+        <div className="term">
+          {renderStep()}
+        </div>
+
+        {t.showAnnotations && <Annotations arm={arm} step={step} />}
+      </div>
+
+      {/* Scenario stepper */}
+      <div className="scenario-bar">
+        <div style={{display:'flex', gap:14, alignItems:'center'}}>
+          <span style={{fontSize:10, textTransform:'uppercase', letterSpacing:1.5, color:'var(--paper-ink-3)'}}>Arm</span>
+          <div className="arm-pills">
+            <button className={arm==='C'  ? 'active' : ''} onClick={() => setT('arm', 'C')}>Control</button>
+            <button className={arm==='T1' ? 'active' : ''} onClick={() => setT('arm', 'T1')}>T1 · auto</button>
+            <button className={arm==='T2' ? 'active' : ''} onClick={() => setT('arm', 'T2')}>T2 · /packs</button>
+          </div>
+        </div>
+
+        <div className="step-stack">
+          <span className="label">Step</span>
+          <div className="step-dots">
+            {STEP_LABELS.map((l, i) => (
+              <div key={i}
+                className={`step-dot ${step === i+1 ? 'active' : (step > i+1 ? 'done' : '')}`}
+                title={l}
+                onClick={() => jumpStep(i+1)}>
+                {i+1}
+              </div>
+            ))}
+          </div>
+          <span style={{minWidth:110, fontSize:10, color:'var(--paper-ink-3)', textAlign:'right'}}>{STEP_LABELS[step-1]}</span>
+        </div>
+
+        <div style={{display:'flex', gap:8}}>
+          <button className="btn small" onClick={() => jumpStep(Math.max(1, step-1))}>← Prev</button>
+          <button className="btn small primary" onClick={() => jumpStep(Math.min(6, step+1))}>Next →</button>
+        </div>
+      </div>
+
+      <div className="legend">
+        <div className="item">
+          <div className="swatch term-bg" />
+          <div><b>Terminal-native.</b> Same scenario as the desktop wireframe, redesigned for CLI: prompts, slash-commands, inline approval, scrollback.</div>
+        </div>
+        <div className="item">
+          <div className="swatch term-accent" />
+          <div><b>Pack-active surface.</b> Warm accent indicates the Verified Security Pack is shaping behavior — visible in statusbar, plan, and rationale callouts.</div>
+        </div>
+        <div className="item">
+          <div className="swatch term-warn" />
+          <div><b>Approval gate.</b> Destructive actions become an inline [y/N] prompt — no modal needed; respects the keyboard-only flow.</div>
+        </div>
+        <div className="item">
+          <div className="swatch dash" />
+          <div><b>Tweaks panel.</b> Toggle arm (Control / T1 / T2) and step. T2 here means "settings-buried" → user must run <span className="mono">/packs</span> to discover it.</div>
+        </div>
+      </div>
+
+      <div className="stage-footer">
+        <div>Mazen Azar · Craig Bennett · MGMT 275 Product Delivery · Final Project</div>
+        <div>Claude Code CLI · Verified Security Pack · v0.3 wireframe</div>
+      </div>
+
+      <TweaksPanel title="Tweaks · CLI Prototype">
+        <TweakSection title="Experiment arm">
+          <TweakRadio
+            value={t.arm}
+            onChange={(v) => setT('arm', v)}
+            options={[
+              { value: 'C',  label: 'Control' },
+              { value: 'T1', label: 'T1 · auto' },
+              { value: 'T2', label: 'T2 · /packs' },
+            ]}
+          />
+          <div style={{fontSize:10, color:'#888', marginTop:6, lineHeight:1.4}}>
+            T1: detection banner prints on session start. T2: same Pack, only surfaced via <code>/packs</code>. C: no Pack.
+          </div>
+        </TweakSection>
+
+        <TweakSection title="Scenario step">
+          <TweakSelect
+            value={String(t.step)}
+            onChange={(v) => setT('step', parseInt(v, 10))}
+            options={STEP_LABELS.map((l, i) => ({ value: String(i+1), label: `${i+1} · ${l}` }))}
+          />
+        </TweakSection>
+
+        <TweakSection title="Grader annotations">
+          <TweakToggle
+            value={t.showAnnotations}
+            onChange={(v) => setT('showAnnotations', v)}
+            label="Hand-drawn margin notes"
+          />
+        </TweakSection>
+      </TweaksPanel>
+    </div>
+  );
+}
+
+// ============================================================================
+// Annotations — same idea as wireframe, retuned for CLI states
+// ============================================================================
+function Annotations({ arm, step }) {
+  const notes = [];
+  if (step === 1 && arm === 'T1') {
+    notes.push({ top: 180, left: -180, w: 170, text: "T1: detection prints at session start ↗  feature finds the user, not the reverse." });
+    notes.push({ top: 280, right: -190, w: 180, text: "↖ Single-key affordances [i / y / n] respect the CLI muscle memory." });
+  }
+  if (step === 1 && arm === 'T2') {
+    notes.push({ top: 200, left: -190, w: 180, text: "T2: only this tiny hint ↗ . Same pack, hidden behind discovery — isolates whether the surface itself drives lift." });
+  }
+  if (step === 1 && arm === 'C') {
+    notes.push({ top: 200, left: -180, w: 170, text: "Control: nothing. ↗ This is the average-user baseline the strategy doc calls out." });
+  }
+  if (step === 2) {
+    notes.push({ top: 200, left: -180, w: 170, text: "Disclaimer first. ↘  \"Verified ≠ guaranteed\" — Risk #1 from the PRFAQ." });
+    notes.push({ top: 480, right: -200, w: 190, text: "↖ Tools, gates, blocks ALL visible before enable. Trust through transparency, not branding." });
+  }
+  if (step === 3) {
+    notes.push({ top: 200, right: -200, w: 190, text: "↖ Plan declares expected gates up front. No surprise prompts mid-execution." });
+    notes.push({ top: 420, left: -180, w: 170, text: "Tool list narrows when pack is on ↘  — blast-radius mitigation visible to the user." });
+  }
+  if (step === 4) {
+    notes.push({ top: 360, right: -200, w: 190, text: "Per-edit rationale ↖  maps directly to the eval metric \"correctness with explanation\" from §1.2." });
+  }
+  if (step === 5) {
+    notes.push({ top: 280, left: -190, w: 180, text: "Inline [y/N] gate ↗ — modal would break terminal flow. Pre-flight evidence shown to inform the decision." });
+  }
+  if (step === 6) {
+    notes.push({ top: 380, right: -200, w: 190, text: "↖ Pack findings auto-attach to PR body — shareable artifact drives team-wide standardization (KR3)." });
+  }
+
+  return (
+    <>
+      {notes.map((n, i) => (
+        <div key={i} className="annotation"
+          style={{
+            top: n.top,
+            left: n.left,
+            right: n.right,
+            width: n.w,
+            transform: `rotate(${(i % 2 === 0 ? -1 : 1) * 1.2}deg)`
+          }}>
+          {n.text}
+        </div>
+      ))}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+
+
+</body></html>
