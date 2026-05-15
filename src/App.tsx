@@ -1,20 +1,17 @@
 import { CliRoute } from "./routes/CliRoute";
-import { DemoRoute } from "./routes/DemoRoute";
-import { DesktopRoute } from "./routes/DesktopRoute";
-import { HandoffRoute } from "./routes/HandoffRoute";
-import { LauncherRoute } from "./routes/LauncherRoute";
-
-function currentPath() {
-  const path = window.location.pathname.replace(/\/+$/, "");
-  return path || "/";
-}
+import { GuiRoute } from "./routes/GuiRoute";
+import { LandingRoute } from "./routes/LandingRoute";
 
 export default function App() {
-  const path = currentPath();
+  const path = window.location.pathname;
 
-  if (path === "/demo") return <DemoRoute />;
-  if (path === "/desktop") return <DesktopRoute />;
-  if (path === "/cli") return <CliRoute />;
-  if (path === "/handoff") return <HandoffRoute />;
-  return <LauncherRoute />;
+  if (path === "/cli" || path === "/demo") {
+    return <CliRoute />;
+  }
+
+  if (path === "/gui") {
+    return <GuiRoute />;
+  }
+
+  return <LandingRoute />;
 }

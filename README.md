@@ -1,30 +1,25 @@
-# Verified Security Pack Prototype Suite
+# Verified Security Pack Prototype
 
-This repo contains a polished demo suite for the MGMT 275 Product Delivery final project. The prototype shows how a Verified Security Pack could make Claude Code safer and clearer for security-sensitive work such as auth, token, and database migration changes.
+This repo contains a static Vite + React prototype for the MGMT 275 Product Delivery final project. It demonstrates a simulated Claude Code workflow where security-sensitive work is detected, guarded, checkpointed, gated, and summarized for review.
+
+The prototype is a product simulation. It does not run real security scans, mutate a real repo, or certify code.
+
+## Demo Paths
+
+- `/` - professor-facing landing page with GUI and CLI demo choices
+- `/gui` - Claude Code desktop-style GUI demo
+- `/cli` - terminal-native CLI demo
+- `/demo` - compatibility alias for the CLI demo
 
 ## Demo Goal
 
-The primary path is a 4-minute live walkthrough:
+Both demos tell the same `payments-api` refresh-token migration story:
 
-1. Open the launcher and start the guided demo.
-2. Show security-sensitive project detection.
-3. Inspect and enable the Verified Security Pack.
-4. Review the security-aware plan.
-5. Run the simulated agent.
-6. Resolve the destructive database approval gate.
-7. End on the PR artifact.
-
-The prototype is a product simulation. It does not run real security scans or certify code.
-
-## Routes
-
-- `/` - launcher and suite overview
-- `/demo` - guided interactive dummy app with guardrails and autocomplete
-- `/desktop` - desktop-app prototype surface for T1/T2/control comparison
-- `/cli` - terminal-native prototype surface
-- `/handoff` - concise grading/demo handoff page
-
-Legacy standalone HTML files are still present in the project root for reference.
+1. The user starts mid-work with a prefilled task.
+2. Claude detects auth, token, dependency, and destructive database-migration risk signals.
+3. The Verified Security Pack adds checks, checkpoints, and a safer plan.
+4. A human approval gate blocks `DROP TABLE IF EXISTS auth_tokens_v1;`.
+5. The demo ends on a PR-ready artifact with the gate decision and security rationale.
 
 ## Local Setup
 
@@ -45,6 +40,10 @@ npm run preview
 
 ## Demo Controls
 
-The guided demo keeps users inside valid states. Buttons are disabled when an action would not make sense, the approval gate cannot be resolved before the simulated destructive step appears, and the command palette exposes safe shortcuts for presenter recovery.
-
-The task composer includes a prefilled task, quick-pick templates, and autocomplete suggestions for file paths, migration names, auth/security terms, and full task templates.
+- `Enter` advances the GUI and CLI demos.
+- On the final scene, `Enter` restarts the active demo from the beginning.
+- The visible primary button mirrors `Enter`.
+- `R` resets to the first scene.
+- In the CLI demo, `T` toggles a compact transcript preview.
+- The demo controls include a Landing link for switching between GUI and CLI.
+- At the approval gate, the secondary button can reject the destructive migration instead of approving it.
