@@ -38,6 +38,10 @@ npm run build
 npm run preview
 ```
 
+## Vercel Routing
+
+`vercel.json` rewrites all routes to `index.html` so direct links such as `/gui`, `/cli`, and `/demo` work on Vercel.
+
 ## Demo Controls
 
 - `Enter` advances the GUI and CLI demos.
