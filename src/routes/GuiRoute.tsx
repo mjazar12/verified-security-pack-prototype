@@ -123,9 +123,9 @@ export function GuiRoute() {
             </div>
           </div>
           <div className="sidebar-user">
-            <span>M</span>
-            <b>Maz</b>
-            <em>Pro</em>
+            <span>D</span>
+            <b>Demo User</b>
+            <em>Prototype</em>
           </div>
         </aside>
 
